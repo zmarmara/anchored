@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchored | Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1a1a1a; /* Darker for the terminal feel */
+            --text: #e0dcd5;
+            --accent: #b56a4c;
+            --dim: #666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'JetBrains Mono', monospace;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        .terminal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal-header {
+            margin-bottom: 40px;
+            font-family: 'Source Serif 4', serif;
+            font-style: italic;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        #output {
+            flex-grow: 1;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .prompt { color: var(--accent); font-weight: bold; }
+
+        input {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: var(--accent);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .system-msg { color: var(--dim); font-size: 0.85rem; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="terminal-container">
+    <header class="terminal-header">
+        <p>A space for dialogue. You are speaking with Zoe's digital presence.</p>
+    </header>
+
+    <div id="output"></div>
+
+    <div class="input-line">
+        <span class="prompt">guest@zoe:~$</span>
+        <input type="text" id="user-input" autofocus autocomplete="off">
+    </div>
+    
+    <div class="system-msg">Type 'hello' to begin, or 'help' for options.</div>
+</div>
+
+<script>
+    const output = document.getElementById('output');
+    const input = document.getElementById('user-input');
+
+    const dialogTree = {
+        'hello': "Presence detected. I am a reflection of Zoe's work. What brings you to this unfilled space today?",
+        'help': "Available commands: \n[about] - Zoe's focus \n[contact] - Leave a message \n[clear] - Reset the space",
+        'about': "Zoe is currently exploring the intersection of existential psychology and product design. She is sitting with questions of time and self-equity.",
+        'contact': "Please type your email and your inquiry. I will ensure it reaches her physical presence."
+    };
+
+    function appendToTerminal(text, type = 'bot') {
+        const div = document.createElement('div');
+        div.style.marginBottom = "20px";
+        
+        if (type === 'user') {
+            div.innerHTML = `<span class="prompt">guest:</span> ${text}`;
+        } else {
+            div.innerHTML = `<span style="color: #6b705c">zoe_digital:</span> ${text}`;
+        }
+        
+        output.appendChild(div);
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    input.addEventListener('keydown', async (e) => {
+        if (e.key === 'Enter') {
+            const val = input.value.toLowerCase().trim();
+            appendToTerminal(input.value, 'user');
+            input.value = '';
+
+            // Simple Logic or API Call
+            setTimeout(() => {
+                if (dialogTree[val]) {
+                    appendToTerminal(dialogTree[val]);
+                } else if (val === 'clear') {
+                    output.innerHTML = '';
+                } else {
+                    // This is where you would call Gemini API
+                    appendToTerminal("I am reflecting on that. In the meantime, you can reach Zoe directly at hello@zoemarmara.com.");
+                }
+            }, 500);
+        }
+    });
+
+    // Initial greeting
+    window.onload = () => {
+        setTimeout(() => appendToTerminal("The space is open. How shall we begin?"), 1000);
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchored | Self-Equity & Personal Value Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-bg: #fdfaf6;
+            --soft-peach: #f9f0e8;
+            --text-main: #3a3532;
+            --accent-clay: #b56a4c;
+            --olive-brand: #5b6348;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--warm-bg); 
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Source Serif 4', serif; font-weight: 600; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+        .nav-logo img { height: 30px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            align-items: center;
+            padding-top: 80px;
+        }
+        .hero-content { padding-right: 60px; }
+        .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; color: var(--olive-brand); }
+        .hero-content p { font-size: 1.25rem; margin-bottom: 35px; font-weight: 300; }
+        
+        .hero-image {
+            background: var(--soft-peach);
+            height: 80vh;
+            border-radius: 60px 0 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-image img { width: 80%; height: auto; transform: translateY(20px); }
+
+        /* The Framework Section */
+        .framework { padding: 120px 0; background: var(--white); text-align: center; }
+        .framework-intro { max-width: 700px; margin: 0 auto 80px; }
+        .framework-intro h2 { font-size: 2.5rem; margin-bottom: 20px; }
+
+        .still-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+			margin:0px 10px 0px 10px;
+        }
+        .still-card { padding: 40px 20px; border: 1px solid var(--soft-peach); border-radius: 20px; transition: 0.3s; }
+        .still-card:hover { border-color: var(--accent-clay); background: var(--warm-bg); }
+        .still-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--accent-clay); }
+        .still-card span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; }
+
+        /* App Context Section */
+        .app-context { padding: 120px 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+        .app-context img { width: 100%; border-radius: 30px; }
+        .context-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--olive-brand);
+            color: var(--white);
+            padding: 100px 40px;
+            border-radius: 50px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .cta-section h2 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; }
+        .btn-primary { 
+            display: inline-block; padding: 18px 40px; background: var(--white); 
+            color: var(--olive-brand); text-decoration: none; border-radius: 12px; 
+            font-weight: 600; margin-top: 30px; transition: 0.3s;
+        }
+        .btn-primary:hover { background: var(--soft-peach); }
+
+        footer { text-align: center; padding-bottom: 60px; opacity: 0.6; font-size: 0.9rem; }
+
+        @media (max-width: 850px) {
+            .hero, .app-context { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { padding-right: 0; margin-bottom: 60px; }
+            .hero-image { border-radius: 40px; height: 50vh; }
+            .still-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="../" class="nav-logo"><img src="anchored-app.png" alt="Anchored"></a>
+        <ul class="nav-links">
+            <li><a href="../framework/index.html">The STILL Framework</a></li>
+            <li><a href="../coaching/index.html">The STILL Coach</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sustain attention to lived experience.</h1>
+            <p>Anchored is a reflective environment built to help individuals cultivate <strong>self-equity</strong> through phenomenological inquiry and the STILL Framework.</p>
+            <a href="#invite" class="btn-primary" style="background: var(--accent-clay); color: white;">Invitations will open soon</a>
+        </div>
+        <div class="hero-image">
+            <img src="mobile-app.jpg" alt="A high-quality mobile app landing page mockup featuring a smartphone displaying the 'Anchor Flows' app. The phone sits on a white pedestal against a soft blue and beige gradient background. The screen shows categories like Awareness, Performance, and Resonance with colorful, stylized illustrations." style="border-radius: 20px; width: 75%;">
+        </div>
+    </section>
+
+    <section class="framework" id="framework">
+        <div class="framework-intro">
+            <span>THE STILL FRAMEWORK</span>
+            <h2>A theoretical foundation for personal coherence.</h2>
+            <p>Adapted from Keller’s CBBE model, the STILL Framework moves away from optimization toward resonance and meaning-making.</p>
+        </div>
+
+        
+
+        <div class="still-grid">
+            <div class="still-card">
+                <span>Phase 01</span>
+                <h3>Awareness</h3>
+                <p>Noticing the patterns of lived time.</p>
+            </div>
+            <div class="still-card">
+                <span>Phase 02</span>
+                <h3>Meaning</h3>
+                <p>Identifying capital in the everyday.</p>
+            </div>
+            <div class="still-card">
+                <span>Phase 03</span>
+                <h3>Alignment</h3>
+                <p>Coherence between value and action.</p>
+            </div>
+            <div class="still-card">
+                <span>Phase 04</span>
+                <h3>Resonance</h3>
+                <p>The emergence of self-equity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-context" id="community">
+        <div class="context-image">
+            <div style="background: var(--soft-peach); padding: 60px; border-radius: 40px; text-align: center;">
+                <h3 style="font-family: 'Source Serif 4'; font-style: italic;">"Meaning is not proven. It is inhabited. It’s about staying with yourself long enough to become real."</h3>
+            </div>
+        </div>
+        <div class="context-text">
+            <h2>A community catalyst and research vehicle.</h2>
+            <p>Alongside the digital environment, Anchored facilitates small, shared spaces of dialogue held twice monthly. These are not interventions, but collective reflective spaces.</p>
+            <br>
+            <p>From a research perspective, the app offers a unique opportunity for longitudinal observation of how individuals construct identity over time during life transitions.</p>
+        </div>
+    </section>
+
+    <section class="cta-section" id="invite">
+        <h2>Begin your cumulative meaning capital.</h2>
+        <p>Join a limited community of people in transition.</p>
+        <a href="#" class="btn-primary">Invitations will open soon</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Anchored.gr &bull; Zoe S. Marmara</p>
+        <p style="margin-top: 10px; font-size: 0.75rem;">MSc Existential Psychotherapy (Cand.) | Certified Professional Coach</p>
+    </footer>
+</div>
+
+</body>
+</html>
