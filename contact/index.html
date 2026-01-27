@@ -79,7 +79,7 @@
 
 <div class="terminal-container">
     <header class="terminal-header">
-        <p>A space for dialogue. You are speaking with Zoe's digital presence.</p>
+        <p>You are speaking with Zoe's digital presence.</p>
     </header>
 
     <div id="output"></div>
@@ -89,7 +89,7 @@
         <input type="text" id="user-input" autofocus autocomplete="off">
     </div>
     
-    <div class="system-msg">Type 'hello' to begin, or 'help' for options.</div>
+    <div class="system-msg">Type 'help' for options.</div>
 </div>
 
 <script>
@@ -98,11 +98,11 @@
 
     const dialogTree = {
         'help': "Type how you feel and the system will provide quick help: \n[about] - Zoe's status \n[status] - Reset the space",
-		'status': "On study break. Zoe will be back after 7 February. Type help."
-		'fear': "Fear is a signal, not a verdict. Look around and name 5 neutral objects. You are here. This moment is here. That’s enough."
-		'shame': "Shame wants you alone. We’re not doing alone. Straighten spine, soften belly, exhale."
-		'lonely': "Right now, you are in your head. Get out of your head. Unclench jaw, drop shoulders, energy on your feet. Clarity follows."
-		'anger': "Press feet into floor, long exhale. Anger often guards something tender. You are ok."
+		'status': "On study break. Zoe will be back after 7 February. Type help.",
+		'fear': "Fear is a signal, not a verdict. Look around and name 5 neutral objects. You are here. This moment is here. That’s enough.",
+		'shame': "Shame wants you alone. We’re not doing alone. Straighten spine, soften belly, exhale.",
+		'lonely': "Right now, you are in your head. Get out of your head. Unclench jaw, drop shoulders, energy on your feet. Clarity follows.",
+		'anger': "Press feet into floor, long exhale. Anger often guards something tender. You are ok.",
 		'confused': "Sip water, look out a window, breathe. We don’t force clarity. You are here."
     };
 
@@ -134,7 +134,7 @@
                     output.innerHTML = '';
                 } else {
                     // This is where you would call Gemini API
-                    appendToTerminal("I am reflecting on that. In the meantime, you can reach Zoe directly at hello@zoemarmara.com.");
+                    appendToTerminal("I am reflecting on that. In the meantime, you can reach Zoe directly at hello@anchored.gr.");
                 }
             }, 500);
         }
