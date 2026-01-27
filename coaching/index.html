@@ -1,151 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anchored | The STILL Coach</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-	<style>
-        :root {
-            --bg-gradient: linear-gradient(180deg, #e0f2f1 0%, #fdf5e6 100%);
-            --accent-green: #7ca952;
-            --accent-orange: #f28d35;
-            --text-dark: #2c3e50;
-            --text-muted: #546e7a;
-            --white: #ffffff;
-            --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
-			 --warm-bg: #fdfaf6;
-            --soft-peach: #f9f0e8;
-            --text-main: #3a3532;
-            --accent-clay: #b56a4c;
-            --olive-brand: #5b6348;
+    <title>Zoe Marmara | Grounded Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Instrument Sans', sans-serif; 
+            background-color: #FDFCFB; 
+            color: #4A4440;
+            line-height: 1.6;
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        
+        .soft-card {
+            background: #ffffff;
+            border: 1px solid #F1EDE9;
+            transition: all 0.3s ease;
+        }
+        
+        .soft-card:hover {
+            border-color: #D4C3B5;
+            background: #FCFAF8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {  font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-gradient); color: var(--text-dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
-        
-       /* Navigation */
-        nav {
-            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+        .cta-button {
+            background-color: #5B6354;
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 30px; }
-        .nav-logo img { height: 30px; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; }
 
-        /* Main Container */
-        .container { max-width: 900px; margin: 100px auto; padding: 0 20px; flex: 1; }
-
-        /* Split Layout Section */
-        .profile-split { display: grid; grid-template-columns: 350px 1fr; gap: 50px; align-items: start; margin-bottom: 60px; }
-        
-        .profile-image-col { position: sticky; top: 100px; }
-        .profile-img { width: 100%; border-radius: 24px; box-shadow: var(--card-shadow); border: 8px solid var(--white); object-fit: cover; aspect-ratio: 4/5; }
-
-        .profile-content-col { display: flex; flex-direction: column; gap: 30px; }
-        
-        .name-heading { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1.1; margin-bottom: 10px; }
-        .tagline { font-style: italic; color: var(--text-muted); font-size: 1.2rem; margin-bottom: 20px; }
-
-        .section-card { background: var(--white); padding: 35px; border-radius: 24px; box-shadow: var(--card-shadow); }
-        h2 { font-family: 'Playfair Display', serif; margin-bottom: 20px; font-size: 1.8rem; }
-        h3 { font-family: 'Playfair Display', serif; color: var(--accent-green); margin-bottom: 10px; }
-        .label { font-weight: 600; color: var(--accent-orange); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 10px; }
-
-        /* Ways I Work Grid */
-        .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; }
-        .work-item h4 { font-family: 'Playfair Display', serif; color: var(--accent-green); margin-bottom: 8px; }
-
-        /* CTA */
-        .cta-section { background: var(--text-dark); color: white; text-align: center; padding: 80px 20px; margin-bottom: 80px}
-        .btn-primary { display: inline-block; background: var(--accent-orange); color: white; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 25px; }
-
-         /* Footer */
-		footer { background: #f8f9fa; text-align: center; padding-bottom: 60px; opacity: 0.6; font-size: 0.9rem; }
-
-         @media (max-width: 850px) {
-            .hero, .app-context { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { padding-right: 0; margin-bottom: 60px; }
-            .hero-image { border-radius: 40px; height: 50vh; }
-            .still-grid { grid-template-columns: 1fr 1fr; }
+        .cta-button:hover {
+            background-color: #484F43;
+            transform: translateY(-1px);
         }
+
+        /* Λεπτή γραμμή για διαχωρισμό χωρίς βάρος */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E5E1DD, transparent);
+        }
+		:root {
+		  --warm-bg: #fdfaf6;
+		  --soft-peach: #f9f0e8;
+		  --text-main: #3a3532;
+		  --accent-clay: #b56a4c;
+		  --olive-brand: #5b6348;
+		  --white: #ffffff;
+		}
+
+		/* Navigation */
+		nav {
+		  position: fixed;
+		  top: 0;
+		  width: 100%;
+		  background-color: rgba(253, 250, 246, 0.95);
+		  backdrop-filter: blur(10px);
+		  z-index: 1000;
+		  padding: 20px 0;
+		  border-bottom: 1px solid rgba(0,0,0,0.05);
+		}
+
+		.nav-container {
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: center;
+		  max-width: 1100px;
+		  margin: 0 auto;
+		  padding: 0 30px;
+		}
+
+		.nav-logo img { height: 30px; }
+
+		.nav-links {
+		  display: flex;
+		  gap: 30px;
+		  list-style: none;
+		}
+
+		.nav-links a {
+		  text-decoration: none;
+		  color: var(--text-main);
+		  font-size: 0.9rem;
+		  font-weight: 400;
+		}
+
+
+		body { padding-top: 80px; }
+
     </style>
 </head>
-<body>
+<body class="antialiased">
 
 <nav>
-    <div class="nav-container">
-        <a href="/index.html" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
-        <ul class="nav-links">
-            <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
-            <li><a href="/anchored/coaching/index.html">The STILL Coach</a></li>
-            <li><a href="/anchored/contact/index.html">Contact</a></li>
-        </ul>
-    </div>
+  <div class="nav-container">
+    <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+    <ul class="nav-links">
+      <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
+      <li><a href="/anchored/coaching/index.html">The STILL Coach</a></li>
+      <li><a href="/anchored/contact/index.html">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<div class="container">
-    <div class="profile-split">
-        <div class="profile-image-col">
-            <img src="profile.jpg" alt="Zoi Stil. Marmara" class="profile-img">
+    
+    <header class="max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
+        <h1 class="text-4xl md:text-5xl mb-6 text-stone-900 font-medium">
+            Grounded support when everything feels too much.
+        </h1>
+        <p class="text-lg md:text-xl text-stone-500 font-light max-w-2xl mx-auto mb-10">
+            I offer a structured, human space to help you navigate emotional overwhelm and life transitions with clarity.
+        </p>
+        <a href="#contact" class="cta-button text-white px-10 py-4 rounded-full font-medium tracking-wide inline-block">
+            Book a first session
+        </a>
+    </header>
+
+    <div class="divider max-w-4xl mx-auto"></div>
+
+    <section class="max-w-5xl mx-auto px-6 py-24">
+        <div class="text-center mb-16">
+            <h2 class="serif text-3xl italic mb-4">Maybe you're here because...</h2>
         </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="soft-card p-8 rounded-2xl">
+                <p class="text-stone-800 font-medium mb-2">The noise won't stop.</p>
+                <p class="text-stone-500 text-sm">You feel emotionally flooded and your system can’t seem to find the "off" switch.</p>
+            </div>
 
-        <div class="profile-content-col">
-            <header>
-                <h1 class="name-heading">Zoi Stil. Marmara</h1>
-                <p class="tagline">Product Leadership • Ethical Advocacy • Strategic Inquiry</p>
-            </header>
+            <div class="soft-card p-8 rounded-2xl">
+                <p class="text-stone-800 font-medium mb-2">You're losing your center.</p>
+                <p class="text-stone-500 text-sm">A relationship or situation is destabilizing you, and you’re losing your inner ground.</p>
+            </div>
 
-            <section class="section-card">
-                <span class="label">Career & Leadership</span>
-                <p>Over a decade of experience leading cross-functional teams in Greece and internationally. My leadership style is rooted in human-centered principles, focusing on fostering a culture of psychological safety, transparency, and shared purpose.</p>
-                <p><strong>Domains:</strong> Digital Health, Fintech, E-commerce, and Social Impact.</p>
-            </section>
+            <div class="soft-card p-8 rounded-2xl">
+                <p class="text-stone-800 font-medium mb-2">The "strong one" is tired.</p>
+                <p class="text-stone-500 text-sm">You carry high responsibility and constant pressure, but have nowhere to lean.</p>
+            </div>
 
-            <section class="section-card">
-                <span class="label">Selected Work</span>
-                <h3>The STILL Framework™</h3>
-                <p>Developed an original product framework that adapts traditional Brand Equity models into a tool for Individual Self-Equity. This involves translating high-level existential psychology into a mobile reflective environment.</p>
-            </section>
+            <div class="soft-card p-8 rounded-2xl">
+                <p class="text-stone-800 font-medium mb-2">No labels, just support.</p>
+                <p class="text-stone-500 text-sm">You want support that doesn’t rush or label your experience, and doesn’t overanalyze it.</p>
+            </div>
         </div>
-    </div>
+        
+        <div class="mt-12 text-center">
+            <p class="serif italic text-stone-400 text-lg">You don’t need more analysis. You need to breathe again.</p>
+        </div>
+    </section>
 
-    <section class="section-card">
-        <h2>Ways I Work</h2>
-        <div class="work-grid">
-            <div class="work-item">
-                <h4>Product Thinking</h4>
-                <p>I view products not as a set of features, but as a series of interactions that shape lived experience. Every decision is measured against the long-term value it adds to the user's life.</p>
-            </div>
-            <div class="work-item">
-                <h4>Human-Centered</h4>
-                <p>Deeply influenced by phenomenology. My process starts with observation and empathy, ensuring that the "why" is always visible to the engineering and design teams.</p>
-            </div>
-            <div class="work-item">
-                <h4>Ethical Decision-Making</h4>
-                <p>Committed to privacy, inclusivity, and sustainability. I advocate for products that respect human attention rather than exploiting it.</p>
-            </div>
-            <div class="work-item">
-                <h4>Strategic Inquiry</h4>
-                <p>Using disciplined structure to create space for authentic growth and responsible action.</p>
+    <section class="bg-[#F7F5F2] py-24 px-6 border-y border-[#F1EDE9]">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="serif text-3xl mb-6">What we do together</h2>
+                    <p class="text-stone-600 mb-8 leading-relaxed">
+                        I work with people when life feels unstable, overwhelming, or difficult to hold. </br> I combine nervous system regulation, coaching, and existential meaning-making to help you find relief now.
+                    </p>
+                    <ul class="space-y-4 text-sm text-stone-700">
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                            Identify what is dysregulating you
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                            Practical grounding practices
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                            Small, realistic immediate steps
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 italic text-stone-500 text-center">
+                    "This is not performance coaching. It is structured care, presence, and containment."
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="py-24 px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <span class="text-xs uppercase tracking-widest text-stone-400 block mb-4">The Philosophy</span>
+            <h3 class="serif text-2xl italic mb-6">Grounded presence in times of strain and transition</h3>
+            <p class="text-stone-600 font-light leading-relaxed mb-8">My approach is rooted in phenomenology and existential thought: I focus on lived experience as it is felt in the body, in relationships, and in meaning, not on labels.
+			 Together, we slow things down enough for clarity, grounding, and choice to become possible again.</p>
+
+             This work is aligned with the STILL framework: </br>creating space to pause, sense, orient, and respond, instead of reacting from fear.
+            </p>
+            <div class="divider"></div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 py-20 flex flex-col md:flex-row gap-12 items-center">
+        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden grayscale bg-stone-200">
+    <img 
+        src="profile.jpg" 
+        alt="Profile photo"
+        class="class="w-full h-full object-cover object-[center_30%]"/>
 </div>
+        <div class="text-center md:text-left">
+            <h4 class="serif text-xl mb-2">About my background</h4>
+            <p class="text-stone-500 text-sm leading-relaxed max-w-xl">
+                With a long academic and professional path in ICT and business, across Europe, I understand what sustained strain looks like in high-pressure environments. My work emerges from applied practice, not just theory.
+            </p>
+        </div>
+    </section>
 
-<section class="cta-section" id="invite">
-    <h2>Begin your cumulative meaning capital.</h2>
-    <p>Join a limited community of people in transition.</p>
-    <a href="#" class="btn-primary">Invitations will open soon</a>
-</section>
-
- <footer>
-        <p>&copy; 2026 Anchored.gr &bull; Zoe S. Marmara</p>
-        <p style="margin-top: 10px; font-size: 0.75rem;">MSc Existential Psychotherapy (Cand.) | Certified Professional Coach</p>
+    <footer id="contact" class="bg-[#4A4440] text-stone-200 py-24 px-6 rounded-t-[2rem]">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="serif text-4xl mb-6 italic">Let's find your footing.</h2>
+            <p class="text-stone-400 mb-10 font-light">Available for online or in-person sessions.</p>
+            
+            <a href="#" class="bg-white text-stone-800 px-10 py-4 rounded-full font-medium hover:bg-stone-200 transition inline-block mb-6">
+                Book a first session
+            </a>
+            
+            <p class="text-[10px] text-stone-500 uppercase tracking-[0.2em] mt-8">
+                4-6 Session Cycles • Online & In-Person • Confidential Support 
+            </p>
+        </div>
     </footer>
 
 </body>
