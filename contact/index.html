@@ -97,7 +97,7 @@
     const input = document.getElementById('user-input');
 
     const dialogTree = {
-        'help': "Type how you feel and the system will provide quick help: \n[about] - Zoe's status \n[status] - Reset the space",
+        'help': "Type how you feel (fear, shame, lonely, anger, confused) and the system will provide quick help. Alternatively, use commands: \n[status] - Zoe's status \n[clear] - Reset the space",
 		'status': "On study break. Zoe will be back after 7 February. Type help.",
 		'fear': "Fear is a signal, not a verdict. Look around and name 5 neutral objects. You are here. This moment is here. That’s enough.",
 		'shame': "Shame wants you alone. We’re not doing alone. Straighten spine, soften belly, exhale.",
@@ -133,7 +133,6 @@
                 } else if (val === 'clear') {
                     output.innerHTML = '';
                 } else {
-                    // This is where you would call Gemini API
                     appendToTerminal("I am reflecting on that. In the meantime, you can reach Zoe directly at hello@anchored.gr.");
                 }
             }, 500);
