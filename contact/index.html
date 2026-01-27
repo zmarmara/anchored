@@ -97,10 +97,13 @@
     const input = document.getElementById('user-input');
 
     const dialogTree = {
-        'hello': "Presence detected. I am a reflection of Zoe's work. What brings you to this unfilled space today?",
-        'help': "Available commands: \n[about] - Zoe's focus \n[contact] - Leave a message \n[clear] - Reset the space",
-        'about': "Zoe is currently exploring the intersection of existential psychology and self-equity. She is sitting with questions of time and self.",
-		'email': "Please type your email and your inquiry. I will ensure it reaches her physical presence."
+        'help': "Type how you feel and the system will provide quick help: \n[about] - Zoe's status \n[status] - Reset the space",
+		'status': "On study break. Zoe will be back after 7 February. Type help."
+		'fear': "Fear is a signal, not a verdict. Look around and name 5 neutral objects. You are here. This moment is here. That’s enough."
+		'shame': "Shame wants you alone. We’re not doing alone. Straighten spine, soften belly, exhale."
+		'lonely': "Right now, you are in your head. Get out of your head. Unclench jaw, drop shoulders, energy on your feet. Clarity follows."
+		'anger': "Press feet into floor, long exhale. Anger often guards something tender. You are ok."
+		'confused': "Sip water, look out a window, breathe. We don’t force clarity. You are here."
     };
 
     function appendToTerminal(text, type = 'bot') {
