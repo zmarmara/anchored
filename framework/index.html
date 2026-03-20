@@ -3,42 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anchored | The STILL Framework™</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <title>The STILL Framework™ | Anchored</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(180deg, #e0f2f1 0%, #fdf5e6 100%);
-            --accent-green: #7ca952;
-            --accent-orange: #f28d35;
-            --text-dark: #2c3e50;
-            --text-muted: #546e7a;
-            --white: #ffffff;
-            --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
-
             --warm-bg: #fdfaf6;
             --soft-peach: #f9f0e8;
             --text-main: #3a3532;
             --accent-clay: #b56a4c;
             --olive-brand: #5b6348;
-     
+            --white: #ffffff;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-			   font-family: 'Plus Jakarta Sans', sans-serif; 
-		       background: var(--bg-gradient); 
-			   color: var(--text-main);
-			   line-height: 1.7; 
-			   min-height: 100vh; display: 
-			   flex; flex-direction: column; 
-			   -webkit-font-smoothing: antialiased;
-			   }
-			   
-		
-       /* Navigation */
+            background-color: var(--warm-bg); 
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { 
+            font-family: 'Source Serif 4', serif; 
+            font-weight: 600; 
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+        /* NAVIGATION */
         nav {
-            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.9);
+            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
             backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
@@ -46,51 +42,101 @@
         .nav-logo img { height: 30px; }
         .nav-links { display: flex; gap: 30px; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; }
-		
-		
-		
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
 
-        /* Main Content */
-        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; flex: 1; }
+        /* HERO / HEADER */
+        .hero-section {
+            padding: 160px 0 60px;
+            text-align: center;
+        }
+        .hero-section h1 { font-size: 3.5rem; line-height: 1.1; color: var(--olive-brand); margin-bottom: 20px; }
+        .hero-section p.tagline { font-size: 1.25rem; font-weight: 300; max-width: 700px; margin: 0 auto; }
+
+        /* STILL CONTENT CARDS */
+        .section-card { 
+            background: var(--white); 
+            padding: 50px; 
+            border-radius: 40px; 
+            border: 1px solid var(--soft-peach);
+            margin-bottom: 40px;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-card h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--olive-brand); }
+        .section-card p { margin-bottom: 20px; font-size: 1.1rem; }
+
+        /* COMPARISON TABLE STYLES */
+        .comparison-container { margin: 30px 0; overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        .comparison-table th, .comparison-table td { 
+            padding: 18px; 
+            text-align: left; 
+            border-bottom: 1px solid var(--soft-peach); 
+            font-size: 0.95rem;
+        }
+        .comparison-table th { background-color: var(--soft-peach); color: var(--olive-brand); font-family: 'Source Serif 4', serif; }
+        .comparison-table td:first-child { font-weight: 600; color: var(--accent-clay); width: 25%; }
+
+        /* THE CYCLE VISUAL */
+        .cycle-container { 
+            display: flex; justify-content: center; align-items: center; 
+            margin: 40px 0; flex-wrap: wrap; gap: 15px; 
+        }
+        .cycle-item { 
+            background: var(--olive-brand); 
+            color: white; padding: 12px 24px; 
+            border-radius: 50px; font-weight: 600; font-size: 0.9rem; 
+        }
+        .separator { color: var(--accent-clay); font-weight: bold; font-size: 1.2rem; }
+
+        /* GRID SYSTEM */
+        .still-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; 
+            gap: 30px; margin: 60px 0; 
+            max-width: 850px; margin-left: auto; margin-right: auto;
+        }
+        .still-card { 
+            padding: 40px; border: 1px solid var(--soft-peach); 
+            border-radius: 30px; background: var(--white); 
+        }
+        .still-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--accent-clay); }
         
-        header { text-align: center; margin: 60px 0px 60px 0px; }
-        .logo-text { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--text-dark); margin-bottom: 10px; }
-        .tagline { font-style: italic; color: var(--text-muted); font-size: 1.1rem; }
+        /* LIST STYLING */
+        .feature-list { list-style: none; margin-top: 20px; }
+        .feature-list li { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 0.95rem; }
+        .feature-list li::before { content: '•'; color: var(--accent-clay); position: absolute; left: 0; font-weight: bold; }
 
-        .section-card { background: var(--white); padding: 45px; border-radius: 24px; box-shadow: var(--card-shadow); margin-bottom: 40px; }
-        .text-center { text-align: center; }
-        h2 { margin-bottom: 25px; font-family: 'Playfair Display', serif; font-size: 2rem; }
-        h3 { margin-bottom: 15px; font-family: 'Playfair Display', serif; color: var(--accent-green); }
-        p { margin-bottom: 20px; }
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--olive-brand); color: var(--white);
+            padding: 100px 40px; border-radius: 50px; text-align: center; margin: 80px 0;
+        }
+        .cta-section h2 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; }
+        .btn-primary { 
+            display: inline-block; padding: 18px 40px; background: var(--white); 
+            color: var(--olive-brand); text-decoration: none; border-radius: 12px; 
+            font-weight: 600; margin-top: 30px; transition: 0.3s;
+        }
 
-        /* The Cycle Visual */
-        .cycle-container { display: flex; justify-content: space-around; align-items: center; margin: 40px 0; flex-wrap: wrap; gap: 10px; }
-        .cycle-item { background: var(--accent-green); color: white; padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; }
-        .separator { color: var(--accent-green); font-weight: bold; }
+        /* MOBILE OVERLAY */
+        #mobile-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--warm-bg); z-index: 2000; display: none;
+            flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+        }
+        #mobile-overlay a { font-size: 1.5rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; }
 
-        /* List Styling */
-        .feature-list { list-style: none; margin-bottom: 20px; }
-        .feature-list li { margin-bottom: 12px; padding-left: 25px; position: relative; }
-        .feature-list li::before { content: '•'; color: var(--accent-orange); position: absolute; left: 0; font-weight: bold; }
+        footer { text-align: center; padding: 60px 0; opacity: 0.6; font-size: 0.9rem; }
 
-        /* Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .card { background: var(--white); padding: 35px; border-radius: 20px; box-shadow: var(--card-shadow);}
-
-        /* CTA Section */
-        .cta-section { background: var(--text-dark); color: white; text-align: center; padding: 80px 20px; margin-top: 20px; margin-bottom: 80px}
-        .cta-section h2 { color: white; margin-bottom: 15px; }
-        .btn-primary { display: inline-block; background: var(--accent-orange); color: white; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 25px; transition: transform 0.2s; }
-        .btn-primary:hover { transform: scale(1.05); }
-
-        /* Footer */
-		footer { background: #f8f9fa; text-align: center; padding-bottom: 60px; opacity: 0.6; font-size: 0.9rem; }
-
-      @media (max-width: 850px) {
-            .hero, .app-context { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { padding-right: 0; margin-bottom: 60px; }
-            .hero-image { border-radius: 40px; height: 50vh; }
-            .still-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 850px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .still-grid { grid-template-columns: 1fr; }
+            .section-card { padding: 30px; }
+            .cycle-container { gap: 8px; }
+            .cycle-item { padding: 8px 16px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -101,15 +147,27 @@
         <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
         <ul class="nav-links">
             <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
-            <li><a href="/anchored/coaching/index.html">The STILL Coach</a></li>
-            <li><a href="/anchored/contact/index.html">Contact</a></li>
+            <li><a href="/anchored/research/index.html">Research</a></li>
+            <li><a href="/anchored/publications/index.html">Publications</a></li>
+            <li><a href="/anchored/about/index.html">About</a></li>
         </ul>
+        <button class="menu-toggle" id="open-menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
     </div>
 </nav>
 
+<div id="mobile-overlay">
+    <button style="position: absolute; top: 30px; right: 30px; background:none; border:none; font-size: 2rem;" id="close-menu">&times;</button>
+    <a href="/anchored/framework/index.html">The STILL Framework</a>
+    <a href="/anchored/research/index.html">Research</a>
+    <a href="/anchored/publications/index.html">Publications</a>
+    <a href="/anchored/about/index.html">About</a>
+</div>
+
 <div class="container">
-    <header>
-        <h1 class="logo-text">The STILL Framework™</h1>
+    <header class="hero-section">
+        <h1>The STILL Framework™</h1>
         <p class="tagline">A lightweight framework for presence, flow, and deliberate growth.</p>
     </header>
 
@@ -118,7 +176,7 @@
         <p><strong>STILL is about standing with yourself and taking the next honest step.</strong></p>
     </section>
 
-    <section class="section-card text-center">
+    <section class="section-card" style="text-align: center;">
         <h2>What is STILL?</h2>
         <p>STILL is a lightweight personal development framework built around short, focused cycles called Flows.</p>
         <div class="cycle-container">
@@ -128,17 +186,56 @@
             <span class="separator">→</span>
             <div class="cycle-item">Review</div>
             <span class="separator">→</span>
-            <div class="cycle-item">Reshape</div>
+            <span class="cycle-item">Reshape</span>
             <span class="separator">→</span>
             <div class="cycle-item">Next Flow</div>
+        </div>
+        
+        <div class="comparison-container">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Focus</th>
+                        <th>Traditional Methods</th>
+                        <th>STILL Framework™</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Structure</td>
+                        <td>Linear (Goal → End)</td>
+                        <td>Circular (Flows & Loops)</td>
+                    </tr>
+                    <tr>
+                        <td>Application</td>
+                        <td>Reflective & Conceptual</td>
+                        <td>Experiential & Measurable</td>
+                    </tr>
+                    <tr>
+                        <td>Role</td>
+                        <td>Passive Participant</td>
+                        <td>Active Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Failure</td>
+                        <td>Reflection without consequence</td>
+                        <td>Iteration & Integration</td>
+                    </tr>
+					<tr>
+                        <td>Time / Progress</td>
+                        <td>Session-based</td>
+                        <td>Continuous / embedded in daily life</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <p><em>Each Flow provides a clear direction, steady steps, and a moment to turn experience into learning.</em></p>
     </section>
 
-    <div class="grid">
-        <div class="card">
+    <div class="still-grid">
+        <div class="still-card">
             <h3>Anchors</h3>
-            <p>Anchors are small, repeatable actions that keep you steady like bolts on a climbing route.</p>
+            <p>Small, repeatable actions that keep you steady like bolts on a climbing route.</p>
             <ul class="feature-list">
                 <li><strong>Awareness:</strong> Noticing and naming what is happening.</li>
                 <li><strong>Embodiment:</strong> Grounding presence in the body.</li>
@@ -146,13 +243,13 @@
                 <li><strong>Reflection:</strong> Pausing to learn and reshape.</li>
             </ul>
         </div>
-        <div class="card">
+        <div class="still-card">
             <h3>Roles</h3>
             <p>STILL works through three perspectives of showing up.</p>
             <ul class="feature-list">
-                <li><strong>You.</strong>The active self-creator who runs the Flow.</li>
-               <li><strong>Flow Owner.</strong> The guide who frames direction, scope, and priorities.</li>
-               <li><strong>STILL Coach.</strong> The reflective partner who holds space for learning without blame.</li>
+                <li><strong>You:</strong> The active self-creator who runs the Flow.</li>
+                <li><strong>Flow Owner:</strong> The guide who frames direction and scope.</li>
+                <li><strong>STILL Coach:</strong> The reflective partner holding space for learning.</li>
             </ul>
         </div>
     </div>
@@ -161,18 +258,32 @@
         <h2>Why "Lightweight" Matters</h2>
         <p>Many systems fail because they are too heavy to carry or too vague to hold when things get difficult. STILL is simple enough to remember, flexible enough to adapt, and structured enough to prevent drift.</p>
     </section>
+
+    <section class="cta-section" id="invite">
+        <h2>Begin your cumulative meaning capital.</h2>
+        <p>Join a limited community of people in transition.</p>
+        <a href="#" class="btn-primary">Invitations will open soon</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Anchored.gr &bull; Zoi S Marmara</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">
+            <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a> | 
+            <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a> | 
+            <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
 </div>
 
-<section class="cta-section" id="invite">
-    <h2>Begin your cumulative meaning capital.</h2>
-    <p>Join a limited community of people in transition.</p>
-    <a href="#" class="btn-primary">Invitations will open soon</a>
-</section>
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const overlay = document.getElementById('mobile-overlay');
 
-<footer>
-    <p>&copy; 2026 Anchored.gr &bull; Zoe S. Marmara</p>
-    <p style="margin-top: 10px; font-size: 0.75rem;">MSc Existential Psychotherapy (Cand.) | Certified Professional Coach</p>
-</footer>
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+    overlay.onclick = (e) => { if(e.target === overlay) overlay.style.display = 'none'; }
+</script>
 
 </body>
 </html>

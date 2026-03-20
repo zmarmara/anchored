@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Anchored</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-bg: #fdfaf6;
+            --soft-peach: #f9f0e8;
+            --text-main: #3a3532;
+            --accent-clay: #b56a4c;
+            --olive-brand: #5b6348;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--warm-bg); 
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { 
+            font-family: 'Source Serif 4', serif; 
+            font-weight: 600; 
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+        .nav-logo img { height: 30px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
+
+        /* MOBILE OVERLAY */
+        #mobile-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--warm-bg); z-index: 2000; display: none;
+            flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+        }
+        #mobile-overlay a { font-size: 1.5rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; }
+
+        /* ABOUT HERO */
+        .about-hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .about-hero h1 { font-size: 4rem; line-height: 1.1; color: var(--olive-brand); margin-bottom: 25px; }
+        .about-hero p { font-size: 1.5rem; font-family: 'Source Serif 4', serif; font-style: italic; opacity: 0.8; }
+
+        /* STORY SECTIONS */
+        .story-section { padding: 10px 0; }
+        .story-section h2 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 30px; color: var(--accent-clay); }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .story-text p { font-size: 1.1rem; margin-bottom: 20px; font-weight: 300; }
+        
+        /* HIGHLIGHT BOXES */
+        .feature-box {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 40px;
+            border: 1px solid var(--soft-peach);
+            margin-bottom: 40px;
+        }
+
+        /* STILL CYCLE VISUAL */
+        .cycle-wrapper {
+            background: var(--olive-brand);
+            color: var(--white);
+            padding: 80px 40px;
+            border-radius: 60px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .cycle-wrapper h2 { color: var(--white); margin-bottom: 40px; }
+        .loop-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .loop-item {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CREATOR SECTION */
+        .creator-block {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            background: var(--soft-peach);
+            padding: 80px;
+            border-radius: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        .creator-title span { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--accent-clay); font-weight: 600; }
+        .creator-title h2 { font-size: 2.8rem; margin-top: 10px; }
+
+        /* QUOTE */
+        .pull-quote {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            line-height: 1.3;
+            max-width: 800px;
+            margin: 100px auto;
+            color: var(--olive-brand);
+        }
+
+        footer { text-align: center; padding-bottom: 60px; opacity: 0.6; font-size: 0.9rem; }
+
+        @media (max-width: 850px) {
+            .about-hero h1 { font-size: 2.8rem; }
+            .story-grid, .creator-block { grid-template-columns: 1fr; padding: 40px; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .pull-quote { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+        <ul class="nav-links">
+            <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
+            <li><a href="/anchored/research/index.html">Research</a></li>
+            <li><a href="/anchored/publications/index.html">Publications</a></li>
+            <li><a href="/anchored/about/index.html">About</a></li>
+        </ul>
+        <button class="menu-toggle" id="open-menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </div>
+</nav>
+
+<div id="mobile-overlay">
+    <button style="position: absolute; top: 30px; right: 30px; background:none; border:none; font-size: 2rem;" id="close-menu">&times;</button>
+    <a href="/anchored/framework/index.html">The STILL Framework</a>
+    <a href="/anchored/research/index.html">Research</a>
+    <a href="/anchored/publications/index.html">Publications</a>
+    <a href="/anchored/about/index.html">About</a>
+</div>
+
+<div class="container">
+    <section class="about-hero">
+        <h1>About Anchored</h1>
+        <p>A world that pulls us outward.</p>
+    </section>
+
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="story-text">
+                <p>Most people don’t feel lost in an obvious way. They go on with their lives, they function, they try, they adjust. But somewhere in between all that, things start to blur. What they want, what they chose, what just happened by default.</p>
+                <p>Good intentions come and go. And without noticing it, people get used to moving without a clear sense of direction. Until, slowly, the way they’ve been moving starts to feel like their identity.</p>
+				<p>Not because they chose it, but because it has been repeated long enough to feel true.</p>
+            </div>
+            <div class="feature-box">
+                <h2>Why Anchored was created</h2>
+                <p>Anchored began as a response to this drift. Not as a solution, but as a space where someone can pause, notice, and begin again with awareness.</p>
+                <p>At its core lies a simple intention: To create a way for people to return to themselves without pressure, without noise, and without losing their freedom.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="pull-quote">
+        "Self-Equity is the value you build within yourself over time, through awareness, responsibility, and repeated action."
+    </div>
+
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="story-text">
+                <h2>Self-Equity: building inner value</h2>
+                <p>Self-Equity is not something you declare, but something you experience and gradually trust.</p>
+                <p>This idea draws from how value is built in systems and brands, and turns it inward, into lived human experience.</p>
+            </div>
+            <div class="story-text">
+                <h2>A different way of growing</h2>
+                <p>Anchored does not aim to define who you are. It offers a structure that helps you return to yourself, again and again.</p>
+                <p>Not through pressure, but through <strong>presence</strong>. Not through performance, but through <strong>responsibility</strong>. Not through fixed identity, but through a role you consciously choose to live.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cycle-wrapper">
+        <h2>The STILL Framework</h2>
+        <p style="margin-bottom: 40px; opacity: 0.9;">A lightweight structure for personal growth, designed to be simple enough to carry and strong enough to hold you.</p>
+        <div class="loop-container">
+            <div class="loop-item">Name your role</div>
+            <div class="loop-item">Take a step</div>
+            <div class="loop-item">Reflect</div>
+            <div class="loop-item">Reshape</div>
+            <div class="loop-item">Begin again</div>
+        </div>
+        <p style="margin-top: 40px; font-style: italic; opacity: 0.8;">It is not linear. It moves in loops.</p>
+    </section>
+
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="story-text">
+                <h2>Healing as continuation</h2>
+                <p>Anchored is shaped by stories of people who tried, stopped, doubted, and started again. People who did not need perfection, but a way to continue.</p>
+                <p>Here, healing is not a final state. It is not something you “achieve”. It is the moment you remain in the Flow, even when things are incomplete.</p>
+            </div>
+            <div class="story-text">
+                <h2>Where this is going</h2>
+                <p>Anchored is evolving from a personal framework to a shared language of growth. It moves from individual practice to collective experience.</p>
+                <p style="color: var(--accent-clay); font-weight: 600;">
+                    drift → presence<br>
+                    reaction → choice<br>
+                    identity given → identity lived
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="creator-block">
+        <div class="creator-title">
+            <span>THE CREATOR</span>
+            <h2>Zoi S. Marmara</h2>
+        </div>
+        <div class="story-text">
+            <p>Her work sits at the intersection of technology, human-centered thinking, and personal development. With a background in product, research, and writing, she has spent years exploring how structure, reflection, and responsibility shape both systems and people.</p>
+            <p>Her path has consistently returned to one question: <em>How do people build a sense of inner ground in a world that constantly pulls them outward?</em></p>
+            <p>Anchored emerged from this question as an attempt to bring together clarity of thinking with lived human experience.</p>
+        </div>
+    </section>
+
+    <div style="text-align: center; margin-bottom: 100px;">
+        <h3 style="font-size: 2rem; margin-bottom: 20px;">A quiet invitation</h3>
+        <p style="font-weight: 300;">If you find yourself here, you are not starting from zero. You are already in the process of becoming.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Anchored.gr &bull; Zoi S Marmara</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">
+            <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a> | 
+            <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a> | 
+            <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+</div>
+
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const overlay = document.getElementById('mobile-overlay');
+
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+    overlay.onclick = (e) => { if(e.target === overlay) overlay.style.display = 'none'; }
+</script>
+
+</body>
+</html>
