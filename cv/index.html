@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoi Marmara | Product Owner - Professional Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-bg: #fdfaf6;
+            --soft-peach: #f9f0e8;
+            --text-main: #3a3532;
+            --accent-clay: #b56a4c;
+            --olive-brand: #5b6348;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--warm-bg); 
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { 
+            font-family: 'Source Serif 4', serif; 
+            font-weight: 600; 
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+        .nav-logo img { height: 30px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
+
+        #mobile-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--warm-bg); z-index: 2000; display: none;
+            flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+        }
+        #mobile-overlay a { font-size: 1.5rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; }
+
+        /* --- PROFILE CONTENT STYLES --- */
+        .profile-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, #f9f0e8 0%, #fdfaf6 100%);
+        }
+        .profile-hero span { text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; color: var(--accent-clay); font-weight: 600; }
+        .profile-hero h1 { font-size: 4rem; line-height: 1.1; margin: 15px 0 25px; color: var(--olive-brand); }
+        .hero-lead { font-size: 1.25rem; max-width: 800px; margin: 0 auto 40px; font-weight: 300; }
+
+        .section-title { font-size: 2.5rem; margin-bottom: 40px; text-align: center; color: var(--olive-brand); }
+        .grid-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px; }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(249, 240, 232, 0.7);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .card h3 { color: var(--accent-clay); margin-bottom: 20px; font-size: 1.3rem; }
+        
+        .exp-item { margin-bottom: 25px; border-left: 2px solid var(--soft-peach); padding-left: 20px; }
+        .exp-date { font-size: 0.8rem; text-transform: uppercase; color: var(--accent-clay); font-weight: 600; }
+        .exp-company { font-weight: 600; display: block; margin: 5px 0; }
+        .exp-desc { font-size: 0.95rem; opacity: 0.8; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 80px; }
+        .skill-tag { 
+            background: var(--soft-peach); 
+            padding: 20px; 
+            border-radius: 15px; 
+            text-align: center; 
+            font-size: 0.9rem; 
+            font-weight: 600;
+            color: var(--olive-brand);
+        }
+
+        .highlight-box {
+            background-color: var(--olive-brand);
+            color: var(--white);
+            padding: 80px 40px;
+            border-radius: 50px;
+            text-align: center;
+            margin: 60px 0 100px;
+        }
+        .highlight-box h2 { color: var(--white); margin-bottom: 20px; font-size: 2.2rem; }
+        .highlight-box p { color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* --- FOOTER (FROM INDEX.HTML) --- */
+        footer { text-align: center; padding-bottom: 60px; opacity: 0.6; font-size: 0.9rem; }
+
+        @media (max-width: 850px) {
+            .grid-wrapper, .skills-grid { grid-template-columns: 1fr; }
+            .profile-hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+        <ul class="nav-links">
+            <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
+            <li><a href="/anchored/research/index.html">Research</a></li>
+            <li><a href="/anchored/publications/index.html">Publications</a></li>
+            <li><a href="/anchored/about/index.html">About</a></li>
+        </ul>
+        <button class="menu-toggle" id="open-menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </div>
+</nav>
+
+<div id="mobile-overlay">
+    <button style="position: absolute; top: 30px; right: 30px; background:none; border:none; font-size: 2rem;" id="close-menu">&times;</button>
+    <a href="/anchored/framework/index.html">The STILL Framework</a>
+    <a href="/anchored/research/index.html">Research</a>
+    <a href="/anchored/publications/index.html">Publications</a>
+    <a href="/anchored/about/index.html">About</a>
+</div>
+
+<header class="profile-hero">
+    <div class="container">
+        <span>Product Owner & Strategic Analyst</span>
+        <h1>Zoi Marmara</h1>
+        <p class="hero-lead">
+            Experienced Product Owner with over 20 years in IT, Publishing, Digital Advertising, and iGaming. Specializing in leading cross-functional teams to deliver impactful products through value creation and user-centric inquiry.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    
+    <section id="experience">
+        <h2 class="section-title">Professional Journey</h2>
+        <div class="grid-wrapper">
+            <div class="card">
+                <h3>Recent Roles</h3>
+                <div class="exp-item">
+                    <span class="exp-date">Present</span>
+                    <span class="exp-company">Netcompany-Intrasoft | Product Owner</span>
+                    <p class="exp-desc">Managing digital solutions and enterprise technologies with a focus on high-stake projects.</p>
+                </div>
+                <div class="exp-item">
+                    <span class="exp-date">09/2021 – 06/2023</span>
+                    <span class="exp-company">OpenBet | Product Owner</span>
+                    <p class="exp-desc">Delivered strategic eSports and F1 Scoreboard initiatives, ensuring alignment with product strategy and stakeholder vision.</p>
+                </div>
+                <div class="exp-item">
+                    <span class="exp-date">05/2021 – 09/2021</span>
+                    <span class="exp-company">Phaistos Networks | Chief Product Owner</span>
+                    <p class="exp-desc">Led workstreams for Glomex Video and Media Exchange services.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>EU Agencies Specialist</h3>
+                <div class="exp-item">
+                    <span class="exp-date">06/2016 – 04/2021</span>
+                    <span class="exp-company">eWorx | Senior Business Analyst & UX Research Lead</span>
+                    <p class="exp-desc">Over 5 years of experience managing projects for European bodies including EUROPOL, Erasmus+, and CEDEFOP.</p>
+                </div>
+                <div class="exp-item">
+                    <span class="exp-date">Core Background</span>
+                    <p class="exp-desc">Extensive history in mobile application development and multimedia project management for major organizations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlight-box">
+        <h2>Strategic Vision</h2>
+        <p>"Building the right things and building them right."<br><br>
+        Leveraging Lean UX and Agile methodologies to bridge the gap between business objectives and authentic user resonance.</p>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Key Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">Agile & Scrum (PSPO I, PSM I)</div>
+            <div class="skill-tag">UX Research & Usability Testing</div>
+            <div class="skill-tag">Backlog Prioritization</div>
+            <div class="skill-tag">User Journey Mapping</div>
+            <div class="skill-tag">Stakeholder Management</div>
+            <div class="skill-tag">Lean UX Principles</div>
+        </div>
+    </section>
+
+    <section id="education" style="margin-bottom: 80px;">
+        <h2 class="section-title">Education & Certifications</h2>
+        <div class="grid-wrapper">
+            <div class="card">
+                <h3>Academic Background</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;"><strong>MBA</strong> in Business Administration and Management</li>
+                    <li style="margin-bottom: 15px;"><strong>MSc</strong> in IT Project Management</li>
+                    <li><strong>BSc Hons</strong> in Mobile Computing (Computer Science)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Professional Credentials</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;">Professional Scrum Product Owner (PSPO I)</li>
+                    <li style="margin-bottom: 15px;">Professional Scrum Master (PSM I)</li>
+                    <li>ITIL 4 Foundation Certificate</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Anchored.gr &bull; Zoi S Marmara</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">
+            <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a> | 
+            <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a> | 
+            <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+</div>
+
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const overlay = document.getElementById('mobile-overlay');
+
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+    overlay.onclick = (e) => { if(e.target === overlay) overlay.style.display = 'none'; }
+</script>
+
+</body>
+</html>

@@ -30,14 +30,20 @@
 
         /* NAVIGATION */
         nav {
-            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.98);
-            backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 25px; }
-        .nav-logo img { height: 28px; }
-        .nav-links { display: flex; gap: 25px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.85rem; font-weight: 400; opacity: 0.8; transition: opacity 0.3s; }
+        .nav-container { 
+            display: flex; justify-content: space-between; align-items: center; 
+            max-width: 1100px; margin: 0 auto; padding: 0 30px; 
+        }
+        .nav-logo img { height: 30px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-main); 
+            font-size: 0.9rem; font-weight: 400; opacity: 0.8; transition: opacity 0.3s; 
+        }
         .nav-links a:hover { opacity: 1; }
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
 
@@ -153,13 +159,13 @@
         footer a { color: var(--text-main); text-decoration: none; margin: 0 8px; transition: color 0.3s; }
         footer a:hover { color: var(--accent-clay); }
 
-        /* MOBILE OVERLAY */
+        /* MOBILE OVERLAY  */
         #mobile-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--warm-bg); z-index: 2000; display: none;
-            flex-direction: column; align-items: center; justify-content: center; gap: 25px;
+            flex-direction: column; align-items: center; justify-content: center; gap: 30px;
         }
-        #mobile-overlay a { font-size: 1.4rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; opacity: 0.9; }
+        #mobile-overlay a { font-size: 1.5rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; opacity: 0.9; }
 
         @media (max-width: 850px) {
             .research-header { padding: 120px 0 50px; }
@@ -188,13 +194,13 @@
             <li><a href="/anchored/about/index.html">About</a></li>
         </ul>
         <button class="menu-toggle" id="open-menu">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
     </div>
 </nav>
 
 <div id="mobile-overlay">
-    <button style="position: absolute; top: 25px; right: 25px; background:none; border:none; font-size: 2rem; color: var(--text-main); opacity: 0.7; cursor:pointer;" id="close-menu">&times;</button>
+    <button style="position: absolute; top: 30px; right: 30px; background:none; border:none; font-size: 2rem; color: var(--text-main); opacity: 0.7; cursor:pointer;" id="close-menu">&times;</button>
     <a href="/anchored/framework/index.html">The STILL Framework</a>
     <a href="/anchored/research/index.html">Research</a>
     <a href="/anchored/publications/index.html">Publications</a>
@@ -293,6 +299,9 @@
 
     openBtn.addEventListener('click', () => toggleMenu(true));
     closeBtn.addEventListener('click', () => toggleMenu(false));
+    overlay.addEventListener('click', (e) => {
+        if(e.target === overlay) toggleMenu(false);
+    });
     overlay.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => toggleMenu(false));
     });
