@@ -1,290 +1,251 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research - From Brand Equity to Self-Equity | Anchored</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,500;1,8..60,300&display=swap" rel="stylesheet">
     <style>
         :root {
-            --warm-bg: #fdfaf6;
-            --soft-peach: #f9f0e8;
-            --text-main: #3a3532;
-            --accent-clay: #b56a4c;
-            --olive-brand: #5b6348;
             --white: #ffffff;
+            --black: #0a0a0a;
+            --accent: #d4a373;
+            --overlay: rgba(0, 0, 0, 0.45);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
         body { 
-            background-color: var(--warm-bg); 
-            color: var(--text-main); 
+            background-color: var(--black); 
+            color: var(--white); 
             font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Source Serif 4', serif; font-weight: 600; color: var(--text-main); }
+        h1, h2, h3 { 
+            font-family: 'Source Serif 4', serif; 
+            font-weight: 300; 
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 25px; }
+        /* FULL PAGE SCROLL SNAP */
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* BACKGROUND IMAGES */
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6) contrast(1.1);
+            transition: transform 15s linear;
+        }
+
+        section:hover .bg-image { transform: scale(1.2); }
 
         /* NAVIGATION */
         nav {
-            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
-            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            padding: 40px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-container { 
-            display: flex; justify-content: space-between; align-items: center; 
-            max-width: 1100px; margin: 0 auto; padding: 0 30px; 
-        }
-        .nav-logo img { height: 30px; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-main); 
-            font-size: 0.9rem; font-weight: 400; opacity: 0.8; transition: opacity 0.3s; 
-        }
-        .nav-links a:hover { opacity: 1; }
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
+        .nav-logo img { height: 22px; filter: brightness(0) invert(1); }
+        .menu-toggle { background: none; border: none; cursor: pointer; color: var(--white); }
 
-        /* HERO SECTION */
-        .research-header {
-            padding: 140px 0 60px;
-            text-align: center;
-            background: linear-gradient(to bottom, #f9f0e8 0%, #fdfaf6 100%);
+        /* CONTENT */
+        .content-box {
+            max-width: 1000px;
+            z-index: 10;
         }
-        .research-header span { text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; color: var(--accent-clay); font-weight: 600; opacity: 0.9; }
-        .research-header h1 { font-size: 3.8rem; line-height: 1.1; margin: 15px 0 20px; color: var(--olive-brand); }
-        .subtitle { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.4rem; opacity: 0.8; margin-bottom: 35px; color: var(--text-main); }
 
-        /* PRE-PRINT BADGE */
-        .preprint-status {
-            display: inline-flex;
-            align-items: center;
-            background: var(--white);
-            padding: 10px 22px;
-            border-radius: 50px;
-            border: 1px solid rgba(181, 106, 76, 0.3);
-            color: var(--accent-clay);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .preprint-status:hover { background: var(--accent-clay); color: var(--white); border-color: var(--accent-clay); }
-        .preprint-status svg { margin-right: 8px; opacity: 0.8; }
-
-        /* CONTENT STYLING */
-        .content-wrapper { max-width: 760px; margin: 0 auto; padding: 40px 0; }
+        .hero-title { font-size: clamp(2.2rem, 9vw, 5rem); line-height: 1; margin-bottom: 25px; font-weight: 200; }
+        .sub-text { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6em; margin-bottom: 25px; display: block; opacity: 0.8; }
         
-        .intro-lead { font-size: 1.3rem; line-height: 1.6; margin-bottom: 50px; color: var(--text-main); font-weight: 300; text-align: center; }
-
-        .research-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 60px 0;
-            align-items: center;
-        }
-
-        .concept-card {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 30px;
-            border: 1px solid rgba(249, 240, 232, 0.7);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.015);
-            margin-bottom: 30px;
-        }
-        .concept-card h3 { color: var(--accent-clay); margin-bottom: 15px; font-size: 1.5rem; }
-
-        /* BIG QUOTE */
-        .big-quote {
-            font-family: 'Source Serif 4', serif;
-            font-size: 1.8rem; 
-            text-align: center;
-            padding: 20px 0;
-            line-height: 1.4;
-            color: var(--olive-brand);
-            max-width: 650px;
-            margin: 40px auto;
-            border-top: 1px solid rgba(0,0,0,0.03);
-            border-bottom: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .insight-list { list-style: none; margin: 20px 0; }
-        .insight-list li { 
-            padding: 14px 20px;
-            background: var(--soft-peach);
-            margin-bottom: 10px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-        }
-        .insight-list li::before { content: "→"; margin-right: 15px; color: var(--accent-clay); font-weight: bold; opacity: 0.7; }
-
-        /* OLIVE BOX - WHAT YOU CONTRIBUTE */
-        .olive-box {
-            background-color: var(--olive-brand);
-            color: var(--white);
-            padding: 60px 50px;
-            border-radius: 40px;
-            text-align: center;
-            margin: 80px 0 60px;
-            box-shadow: 0 15px 35px rgba(91, 99, 72, 0.2);
-        }
-        .olive-box h2 { color: var(--white); margin-bottom: 25px; font-size: 2rem; }
-        .olive-box p { color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8; }
-        
-        .research-cta-btn {
+        .btn-minimal {
             display: inline-block;
-            background-color: var(--accent-clay);
+            padding: 20px 50px;
+            border: 0.5px solid rgba(255,255,255,0.7);
             color: var(--white);
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
             text-decoration: none;
-            margin-top: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(181, 106, 76, 0.2);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            margin-top: 35px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
         }
-        .research-cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(181, 106, 76, 0.3);
+        .btn-minimal:hover { background: var(--white); color: var(--black); letter-spacing: 0.6em; }
+
+        /* GRID STYLING FOR BULLETS */
+        .insight-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+            text-align: left;
         }
 
-        /* FOOTER */
-        footer { text-align: center; padding: 80px 0 50px; opacity: 0.7; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.02); margin-top: 60px; }
-        footer a { color: var(--text-main); text-decoration: none; margin: 0 8px; transition: color 0.3s; }
-        footer a:hover { color: var(--accent-clay); }
+        .insight-item {
+            border-left: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 0 10px 20px;
+        }
+        .insight-item h3 { font-size: 0.8rem; margin-bottom: 5px; color: var(--accent); }
+        .insight-item p { font-size: 0.85rem; opacity: 0.8; font-weight: 200; }
 
-        /* MOBILE OVERLAY  */
+        /* MOBILE OVERLAY */
         #mobile-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--warm-bg); z-index: 2000; display: none;
-            flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+            background: var(--black); z-index: 2000; display: none;
+            flex-direction: column; align-items: center; justify-content: center; gap: 40px;
         }
-        #mobile-overlay a { font-size: 1.5rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; opacity: 0.9; }
+        #mobile-overlay a { font-size: 1.2rem; text-decoration: none; color: var(--white); text-transform: uppercase; letter-spacing: 0.5em; font-family: 'Source Serif 4', serif; }
 
-        @media (max-width: 850px) {
-            .research-header { padding: 120px 0 50px; }
-            .research-header h1 { font-size: 2.6rem; }
-            .subtitle { font-size: 1.2rem; margin-bottom: 30px; }
-            .research-grid { grid-template-columns: 1fr; gap: 30px; margin: 40px 0; }
-            .big-quote { font-size: 1.6rem; }
-            .nav-links { display: none; }
-            .menu-toggle { display: block; opacity: 0.8; }
-            .content-wrapper { padding: 30px 0; }
-            .intro-lead { font-size: 1.15rem; margin-bottom: 40px; }
-            .olive-box { padding: 40px 25px; margin: 60px 0 40px; }
-            .olive-box h2 { font-size: 1.7rem; }
+        @media (min-width: 850px) {
+            .insight-list { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            section { padding: 100px; }
         }
+
+        footer {
+            position: absolute; bottom: 30px; width: 100%; text-align: center;
+            font-size: 0.6rem; letter-spacing: 0.4em; opacity: 0.5;
+        }
+        footer a { color: var(--white); text-decoration: none; margin: 0 10px; }
+
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="nav-container">
-        <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored Logo"></a>
-        <ul class="nav-links">
-            <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
-            <li><a href="/anchored/research/index.html">Research</a></li>
-            <li><a href="/anchored/publications/index.html">Publications</a></li>
-            <li><a href="/anchored/about/index.html">About</a></li>
-        </ul>
-        <button class="menu-toggle" id="open-menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-    </div>
+    <a href="/anchored/index.html" class="nav-logo"><img src="../anchored-app.png" alt="Anchored Logo"></a>
+    <button class="menu-toggle" id="open-menu">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
 </nav>
 
 <div id="mobile-overlay">
-    <button style="position: absolute; top: 30px; right: 30px; background:none; border:none; font-size: 2rem; color: var(--text-main); opacity: 0.7; cursor:pointer;" id="close-menu">&times;</button>
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu">&times;</button>
     <a href="/anchored/framework/index.html">The STILL Framework</a>
     <a href="/anchored/research/index.html">Research</a>
     <a href="/anchored/publications/index.html">Publications</a>
     <a href="/anchored/about/index.html">About</a>
 </div>
 
-<header class="research-header">
-    <div class="container">
-        <span>The Research Initiative</span>
-        <h1>From Brand Equity<br>to Self-Equity</h1>
-        <p class="subtitle">Applying Keller’s CBBE Model to Personal Growth</p>
-        
-        <a href="https://www.researchgate.net/publication/395706791_From_Brand_Equity_to_Self-Equity_Applying_Keller's_CBBE_Model_to_Personal_Growth" target="_blank" class="preprint-status">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            Read the Pre-print on ResearchGate
-        </a>
-    </div>
-</header>
-
-<div class="container">
-    <div class="content-wrapper">
-        <p class="intro-lead">
-            The Anchored App is an ongoing inquiry into a simple but powerful question: 
-            <strong>What if we approached personal growth the way we build meaningful brands?</strong>
-        </p>
-
-        <section class="research-grid">
-            <div class="concept-card">
-                <h3>The Idea</h3>
-                <p>In branding, value is built over time through awareness, meaning, trust, and resonance. Keller’s CBBE model describes this as a structured progression: from identity → to meaning → to response → to deep connection.</p>
-            </div>
-            <div>
-                <p>This research explores how this same structure can be applied inward. <strong>Self-Equity</strong> is introduced as the internal equivalent of brand equity: the value you build within yourself through consistent awareness, emotional clarity, and intentional action.</p>
-            </div>
-        </section>
-
-        <div class="big-quote">
-            "Self-Equity is the value you build within yourself through consistent awareness and intentional action."
+<div class="scroll-container">
+    
+    <section id="hero">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">The Research Initiative</span>
+            <h1 class="hero-title">From Brand Equity<br>to Self-Equity</h1>
+            <p style="font-weight: 200; letter-spacing: 0.1em; opacity: 0.9;">Applying Keller’s CBBE Model to Personal Growth</p>
+            <a href="https://www.researchgate.net/publication/395706791" target="_blank" class="btn-minimal">Read the Pre-print</a>
         </div>
+    </section>
 
-        <section style="margin-bottom: 60px;">
-            <h2 style="text-align:center; margin-bottom: 25px; font-size: 1.8rem;">The Role of the App</h2>
-            <p style="text-align:center; opacity: 0.8; max-width: 600px; margin: 0 auto 20px;">The Anchored app is not just a tool; it is part of the research itself. It allows us to explore how people:</p>
-            <ul class="insight-list">
-                <li>Perceive themselves (identity)</li>
-                <li>Assign meaning to their experiences</li>
-                <li>Respond emotionally and cognitively</li>
-                <li>Build (or lose) inner trust and stability over time</li>
-            </ul>
-        </section>
+    <section id="inquiry">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">The Core Question</span>
+            <h2 style="font-size: 2rem; line-height: 1.4; max-width: 800px; margin: 0 auto;">"What if we approached personal growth the way we build meaningful brands?"</h2>
+            <p style="margin-top: 30px; font-weight: 200; opacity: 0.8;">Anchored is an ongoing inquiry into this powerful shift in perspective.</p>
+        </div>
+    </section>
 
-        <section class="concept-card" style="border: 1px solid var(--soft-peach);">
-            <h2 style="margin-bottom: 18px; font-size: 1.7rem;">Why Participate?</h2>
-            <p style="margin-bottom: 15px;">Most models of personal growth remain abstract. They describe change, but they rarely observe it as it unfolds.</p>
-            <p style="margin-bottom: 15px;">By participating, you are not just “using an app”. You are contributing to a deeper understanding of how inner value is formed. You are exploring questions such as:</p>
-            <ul class="insight-list">
-                <li>How do I recognize my own value without external validation?</li>
-                <li>What creates a sense of internal stability?</li>
-                <li>How does trust in myself develop over time?</li>
-            </ul>
-            <p style="font-weight: 600; margin-top: 20px;">Can personal growth become something we can understand, structure, and cultivate — without losing its depth?</p>
-        </section>
+    <section id="model">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1520067350812-8924618423d2?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Identity → Connection</span>
+            <h2 style="font-size: 1.6rem; margin-bottom: 25px;">Structured Progression</h2>
+            <p style="font-weight: 200; max-width: 700px; margin: 0 auto;">In branding, value is built through a progression from identity to meaning, to response, and finally to deep connection.</p>
+            <p style="margin-top: 20px; font-weight: 400; color: var(--accent);">Self-Equity is the internal equivalent of this value.</p>
+        </div>
+    </section>
 
-        <section class="olive-box">
+    <section id="quote">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <h2 style="font-style: italic; text-transform: none; font-size: 2.4rem; line-height: 1.3; max-width: 900px; margin: 0 auto; letter-spacing: 0.05em;">
+                "Self-Equity is the value you build within yourself through consistent awareness and intentional action."
+            </h2>
+        </div>
+    </section>
+
+    <section id="app-role">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1494500664877-981f47155032?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">The Vehicle for Research</span>
+            <h2>How we observe the self</h2>
+            <div class="insight-list">
+                <div class="insight-item"><h3>Identity</h3><p>How you perceive yourself during transitions.</p></div>
+                <div class="insight-item"><h3>Meaning</h3><p>How you assign value to everyday experience.</p></div>
+                <div class="insight-item"><h3>Response</h3><p>How you respond emotionally and cognitively.</p></div>
+                <div class="insight-item"><h3>Trust</h3><p>How you build inner stability over time.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="participation">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Contributing to Depth</span>
+            <h2 style="font-size: 1.6rem; margin-bottom: 30px;">Bridge theory and reality</h2>
+            <p style="font-weight: 200; max-width: 650px; margin: 0 auto 30px;">Explore how trust develops without external validation. Can personal growth be understood and structured without losing its depth?</p>
+            <div style="text-align: left; opacity: 0.9; font-size: 0.85rem; border-left: 1px solid var(--accent); padding-left: 20px;">
+                <p>• Recognize value without validation</p>
+                <p>• Create a sense of internal stability</p>
+                <p>• Observe change as it unfolds</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">A Living Process</span>
             <h2>What You Contribute</h2>
-            <p>Your participation helps bridge theory and lived experience, structured models and emotional reality, individual reflection and collective insight.</p>
-            
-            <a href="#" class="research-cta-btn">Participate in the Research</a>
-        </section>
-
-        <div style="margin-top: 50px; text-align: center; border-top: 1px solid rgba(0,0,0,0.02); padding-top: 50px;">
-            <h3 style="font-family: 'Source Serif 4', serif; font-size: 1.6rem; margin-bottom: 18px; color: var(--text-main);">A Living Research Process</h3>
-            <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">This is an evolving study. Future iterations may lead to formal academic publication, but its core purpose remains human: to explore how we build value within ourselves in a world that constantly measures us from the outside.</p>
+            <p style="margin-top: 20px; font-weight: 200; letter-spacing: 0.1em; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Your participation helps bridge theory and lived experience, structured models and emotional reality.
+            </p>
+            <a href="#" class="btn-minimal">Participate in the Research</a>
+            <p style="margin-top: 50px; font-size: 0.7rem; opacity: 0.7; max-width: 500px; margin-left: auto; margin-right: auto;">
+                This core purpose remains human: to explore how we build value in a world that constantly measures us from the outside.
+            </p>
         </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Anchored.gr &bull; Zoi S Marmara</p>
-        <p style="margin-top: 12px; font-size: 0.8rem;">
-            <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a> | 
-            <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a> | 
-            <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
-        </p>
-    </footer>
+        <footer>
+            <p>&copy; 2026 ANCHORED &bull; ZOI S MARMARA</p>
+            <div style="margin-top: 15px;">
+                <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a>
+                <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a>
+                <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+            </div>
+        </footer>
+    </section>
 </div>
 
 <script>
@@ -292,18 +253,17 @@
     const closeBtn = document.getElementById('close-menu');
     const overlay = document.getElementById('mobile-overlay');
 
-    const toggleMenu = (show) => {
-        overlay.style.display = show ? 'flex' : 'none';
-        document.body.style.overflow = show ? 'hidden' : '';
-    };
-
-    openBtn.addEventListener('click', () => toggleMenu(true));
-    closeBtn.addEventListener('click', () => toggleMenu(false));
-    overlay.addEventListener('click', (e) => {
-        if(e.target === overlay) toggleMenu(false);
-    });
-    overlay.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+    
+    document.querySelectorAll('.btn-minimal').forEach(btn => {
+        btn.onclick = (e) => {
+            const id = btn.getAttribute('href');
+            if(id && id.startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+            }
+        };
     });
 </script>
 

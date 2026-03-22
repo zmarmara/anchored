@@ -4,262 +4,585 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Anchored</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --warm-bg: #fdfaf6;
-            --soft-peach: #f9f0e8;
-            --text-main: #3a3532;
-            --accent-clay: #b56a4c;
-            --olive-brand: #5b6348;
             --white: #ffffff;
+            --black: #0a0a0a;
+            --accent: #d4a373;
+            --overlay: rgba(0, 0, 0, 0.45);
+            --panel: rgba(255,255,255,0.05);
+            --panel-border: rgba(255,255,255,0.14);
+            --soft-text: rgba(255,255,255,0.78);
+            --muted-text: rgba(255,255,255,0.58);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--warm-bg); 
-            color: var(--text-main); 
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
             font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 { 
-            font-family: 'Source Serif 4', serif; 
-            font-weight: 600; 
+        h1, h2, h3 {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.45);
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+        p { font-weight: 200; }
 
-        /* NAVIGATION */
         nav {
-            position: fixed; top: 0; width: 100%; background-color: rgba(253, 250, 246, 0.95);
-            backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 30px; }
-        .nav-logo img { height: 30px; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; }
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
-
-        /* MOBILE OVERLAY */
-        #mobile-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--warm-bg); z-index: 2000; display: none;
-            flex-direction: column; align-items: center; justify-content: center; gap: 30px;
-        }
-        #mobile-overlay a { font-size: 1.5rem; text-decoration: none; color: var(--text-main); font-family: 'Source Serif 4', serif; }
-
-        /* ABOUT HERO */
-        .about-hero {
-            padding: 180px 0 100px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .about-hero h1 { font-size: 4rem; line-height: 1.1; color: var(--olive-brand); margin-bottom: 25px; }
-        .about-hero p { font-size: 1.5rem; font-family: 'Source Serif 4', serif; font-style: italic; opacity: 0.8; }
-
-        /* STORY SECTIONS */
-        .story-section { padding: 10px 0; }
-        .story-section h2 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 30px; color: var(--accent-clay); }
-        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .story-text p { font-size: 1.1rem; margin-bottom: 20px; font-weight: 300; }
-        
-        /* HIGHLIGHT BOXES */
-        .feature-box {
-            background: var(--white);
-            padding: 50px;
-            border-radius: 40px;
-            border: 1px solid var(--soft-peach);
-            margin-bottom: 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* STILL CYCLE VISUAL */
-        .cycle-wrapper {
-            background: var(--olive-brand);
+        .nav-logo img {
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
             color: var(--white);
-            padding: 80px 40px;
-            border-radius: 60px;
-            text-align: center;
-            margin: 60px 0;
         }
-        .cycle-wrapper h2 { color: var(--white); margin-bottom: 40px; }
-        .loop-container {
+
+        #mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        #mobile-overlay a {
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            font-family: 'Source Serif 4', serif;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .page-hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 30px 80px;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.5) contrast(1.08);
+            transform: scale(1.04);
+        }
+
+        .page-hero::after,
+        .content-section::before,
+        .profile-wrap::before,
+        .footer-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.35), rgba(10,10,10,0.82));
+            z-index: -1;
+        }
+
+        .content-box {
+            max-width: 980px;
+            z-index: 2;
+        }
+
+        .sub-text {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7em;
+            margin-bottom: 25px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 8vw, 5.2rem);
+            line-height: 1.08;
+            margin-bottom: 28px;
+            font-weight: 200;
+        }
+
+        .hero-copy {
+            max-width: 780px;
+            margin: 0 auto;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            color: var(--soft-text);
+        }
+
+        .btn-minimal {
+            display: inline-block;
+            padding: 20px 52px;
+            border: 0.5px solid rgba(255,255,255,0.7);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            margin-top: 40px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-minimal:hover {
+            background: var(--white);
+            color: var(--black);
+            letter-spacing: 0.7em;
+        }
+
+        .content-section,
+        .profile-wrap,
+        .footer-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section .bg-image,
+        .profile-wrap .bg-image,
+        .footer-section .bg-image {
+            filter: brightness(0.32) contrast(1.05);
+        }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 110px 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-intro {
+            max-width: 820px;
+            margin-bottom: 54px;
+        }
+
+        .section-intro h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            margin-bottom: 18px;
+            line-height: 1.22;
+        }
+
+        .section-intro p {
+            color: var(--soft-text);
+            font-size: 1rem;
+        }
+
+        .glass-card,
+        .feature-panel,
+        .loop-card,
+        .profile-copy,
+        .profile-links {
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .story-grid,
+        .dual-grid,
+        .profile-grid {
+            display: grid;
+            gap: 28px;
+        }
+
+        .story-grid {
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: stretch;
+        }
+
+        .dual-grid,
+        .profile-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .glass-card,
+        .feature-panel,
+        .loop-card,
+        .profile-copy,
+        .profile-links {
+            border-radius: 30px;
+            padding: 38px 34px;
+        }
+
+        .story-text p,
+        .feature-panel p,
+        .profile-copy p,
+        .profile-links li,
+        .loop-card p,
+        .quiet-invitation p,
+        .quote-card p {
+            color: var(--soft-text);
+        }
+
+        .story-text p + p,
+        .feature-panel p + p,
+        .profile-copy p + p,
+        .loop-card p + p {
+            margin-top: 14px;
+        }
+
+        .feature-panel h3,
+        .loop-card h3,
+        .profile-links h3,
+        .profile-copy h2,
+        .quiet-invitation h3 {
+            text-transform: none;
+            letter-spacing: 0.06em;
+            text-shadow: none;
+        }
+
+        .feature-panel h3,
+        .loop-card h3,
+        .quiet-invitation h3 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .quote-card {
+            max-width: 920px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 40px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .quote-card p {
+            font-family: 'Source Serif 4', serif;
+            font-size: clamp(1.5rem, 3vw, 2.35rem);
+            line-height: 1.35;
+            letter-spacing: 0.03em;
+        }
+
+        .accent-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .loop-card {
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .loop-items {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
+            margin: 34px 0 24px;
         }
+
         .loop-item {
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 15px 25px;
-            border-radius: 100px;
-            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 14px 22px;
+            border-radius: 999px;
+            font-size: 0.72rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.24em;
+            color: var(--white);
+            background: rgba(255,255,255,0.03);
         }
 
-        /* CREATOR SECTION */
-        .creator-block {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 60px;
-            background: var(--soft-peach);
-            padding: 80px;
-            border-radius: 60px;
-            align-items: center;
-            margin-bottom: 100px;
+        .profile-copy h2 {
+            font-size: 2.1rem;
+            margin-bottom: 18px;
         }
-        .creator-title span { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--accent-clay); font-weight: 600; }
-        .creator-title h2 { font-size: 2.8rem; margin-top: 10px; }
 
-        /* QUOTE */
-        .pull-quote {
-            font-family: 'Source Serif 4', serif;
-            font-size: 2.2rem;
+        .profile-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .link-list {
+            list-style: none;
+        }
+
+        .link-list li {
+            margin-bottom: 12px;
+        }
+
+        .quiet-invitation {
             text-align: center;
-            line-height: 1.3;
-            max-width: 800px;
-            margin: 100px auto;
-            color: var(--olive-brand);
+            max-width: 820px;
+            margin: 0 auto;
         }
 
-        footer { text-align: center; padding-bottom: 60px; opacity: 0.6; font-size: 0.9rem; }
+        .footer-section {
+            min-height: 44vh;
+            display: flex;
+            align-items: flex-end;
+        }
 
-        @media (max-width: 850px) {
-            .about-hero h1 { font-size: 2.8rem; }
-            .story-grid, .creator-block { grid-template-columns: 1fr; padding: 40px; }
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            .pull-quote { font-size: 1.6rem; }
+        .footer-inner {
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            padding: 120px 30px 30px;
+            text-align: center;
+        }
+
+        footer {
+            position: relative;
+            bottom: auto;
+            width: 100%;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            opacity: 0.5;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 900px) {
+            nav { padding: 28px 24px; }
+            .story-grid,
+            .dual-grid,
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .glass-card,
+            .feature-panel,
+            .loop-card,
+            .profile-copy,
+            .profile-links,
+            .quote-card {
+                padding: 30px 24px;
+            }
+            .hero-copy { font-size: 0.96rem; }
+            .footer-inner { padding-top: 90px; }
+            #mobile-overlay a { letter-spacing: 0.28em; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="nav-container">
-        <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
-        <ul class="nav-links">
-            <li><a href="/anchored/framework/index.html">The STILL Framework</a></li>
-            <li><a href="/anchored/research/index.html">Research</a></li>
-            <li><a href="/anchored/publications/index.html">Publications</a></li>
-            <li><a href="/anchored/about/index.html">About</a></li>
-        </ul>
-        <button class="menu-toggle" id="open-menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-    </div>
+    <a href="/anchored/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+    <button class="menu-toggle" id="open-menu" aria-label="Open menu">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
 </nav>
 
 <div id="mobile-overlay">
-    <button style="position: absolute; top: 30px; right: 30px; background:none; border:none; font-size: 2rem;" id="close-menu">&times;</button>
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Close menu">&times;</button>
     <a href="/anchored/framework/index.html">The STILL Framework</a>
     <a href="/anchored/research/index.html">Research</a>
     <a href="/anchored/publications/index.html">Publications</a>
     <a href="/anchored/about/index.html">About</a>
 </div>
 
-<div class="container">
-    <section class="about-hero">
-        <h1>About Anchored</h1>
-        <p>A world that pulls us outward.</p>
-    </section>
+<section class="page-hero">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="content-box">
+        <span class="sub-text">About Anchored</span>
+        <h1 class="hero-title">A world that pulls us outward.</h1>
+        <p class="hero-copy">
+            Anchored was created as a space for pause, return, and renewed direction. It begins from a simple recognition: many people are not broken or incapable, but gradually disconnected from themselves by speed, repetition, and noise.
+        </p>
+        <a href="#story" class="btn-minimal">The beginning</a>
+    </div>
+</section>
 
-    <section class="story-section">
+<section class="content-section" id="story">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="section-intro">
+            <span class="sub-text" style="margin-bottom:14px;">Why it began</span>
+            <h2>When movement continues, but direction starts to blur</h2>
+            <p>
+                The beginning of Anchored sits inside a familiar human experience: life keeps moving, responsibilities continue, and yet something subtle starts to fade. What we want, what we chose, and what simply became habit can slowly become difficult to distinguish.
+            </p>
+        </div>
+
         <div class="story-grid">
-            <div class="story-text">
+            <div class="glass-card story-text">
                 <p>Most people don’t feel lost in an obvious way. They go on with their lives, they function, they try, they adjust. But somewhere in between all that, things start to blur. What they want, what they chose, what just happened by default.</p>
                 <p>Good intentions come and go. And without noticing it, people get used to moving without a clear sense of direction. Until, slowly, the way they’ve been moving starts to feel like their identity.</p>
-				<p>Not because they chose it, but because it has been repeated long enough to feel true.</p>
+                <p>Not because they chose it, but because it has been repeated long enough to feel true.</p>
             </div>
-            <div class="feature-box">
-                <h2>Why Anchored was created</h2>
+
+            <div class="feature-panel">
+                <span class="accent-label">Why Anchored was created</span>
+                <h3>A place to pause without pressure</h3>
                 <p>Anchored began as a response to this drift. Not as a solution, but as a space where someone can pause, notice, and begin again with awareness.</p>
-                <p>At its core lies a simple intention: To create a way for people to return to themselves without pressure, without noise, and without losing their freedom.</p>
+                <p>At its core lies a simple intention: to create a way for people to return to themselves without pressure, without noise, and without losing their freedom.</p>
             </div>
         </div>
-    </section>
-
-    <div class="pull-quote">
-        "Self-Equity is the value you build within yourself over time, through awareness, responsibility, and repeated action."
     </div>
+</section>
 
-    <section class="story-section">
-        <div class="story-grid">
-            <div class="story-text">
-                <h2>Self-Equity: building inner value</h2>
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="quote-card">
+            <span class="accent-label">Core idea</span>
+            <p>“Self-Equity is the value you build within yourself over time, through awareness, responsibility, and repeated action.”</p>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="section-intro">
+            <span class="sub-text" style="margin-bottom:14px;">Self-Equity</span>
+            <h2>Building inner value through awareness, presence, and repetition</h2>
+            <p>
+                Anchored does not try to impose identity. It offers a structure that helps identity become more consciously lived.
+            </p>
+        </div>
+
+        <div class="dual-grid">
+            <div class="glass-card story-text">
+                <span class="accent-label">Inner value</span>
+                <h3>Self-Equity: building inner value</h3>
                 <p>Self-Equity is not something you declare, but something you experience and gradually trust.</p>
                 <p>This idea draws from how value is built in systems and brands, and turns it inward, into lived human experience.</p>
             </div>
-            <div class="story-text">
-                <h2>A different way of growing</h2>
+
+            <div class="glass-card story-text">
+                <span class="accent-label">A different way of growing</span>
+                <h3>Growth without performance</h3>
                 <p>Anchored does not aim to define who you are. It offers a structure that helps you return to yourself, again and again.</p>
                 <p>Not through pressure, but through <strong>presence</strong>. Not through performance, but through <strong>responsibility</strong>. Not through fixed identity, but through a role you consciously choose to live.</p>
             </div>
         </div>
-    </section>
-
-    <section class="cycle-wrapper">
-        <h2>The STILL Framework</h2>
-        <p style="margin-bottom: 40px; opacity: 0.9;">A lightweight structure for personal growth, designed to be simple enough to carry and strong enough to hold you.</p>
-        <div class="loop-container">
-            <div class="loop-item">Name your role</div>
-            <div class="loop-item">Take a step</div>
-            <div class="loop-item">Reflect</div>
-            <div class="loop-item">Reshape</div>
-            <div class="loop-item">Begin again</div>
-        </div>
-        <p style="margin-top: 40px; font-style: italic; opacity: 0.8;">It is not linear. It moves in loops.</p>
-    </section>
-
-    <section class="story-section">
-        <div class="story-grid">
-            <div class="story-text">
-                <h2>Healing as continuation</h2>
-                <p>Anchored is shaped by stories of people who tried, stopped, doubted, and started again. People who did not need perfection, but a way to continue.</p>
-                <p>Here, healing is not a final state. It is not something you “achieve”. It is the moment you remain in the Flow, even when things are incomplete.</p>
-            </div>
-            <div class="story-text">
-                <h2>Where this is going</h2>
-                <p>Anchored is evolving from a personal framework to a shared language of growth. It moves from individual practice to collective experience.</p>
-                <p style="color: var(--accent-clay); font-weight: 600;">
-                    drift → presence<br>
-                    reaction → choice<br>
-                    identity given → identity lived
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="creator-block">
-        <div class="creator-title">
-            <span>THE CREATOR</span>
-            <h2>Zoi S. Marmara</h2>
-        </div>
-        <div class="story-text">
-            <p>Her focus sits at the intersection of technology, human-centered thinking, and personal development. With a background in product, research, and writing, she has spent years exploring how structure, reflection, and responsibility shape both systems and people.</p>
-            <p>Her path has consistently returned to one question: <em>How do people build a sense of inner ground in a world that constantly pulls them outward?</em></p>
-            <p>Anchored emerged from this question as an attempt to bring together clarity of thinking with lived human experience.</p>
-        </div>
-    </section>
-
-    <div style="text-align: center; margin-bottom: 100px;">
-        <h3 style="font-size: 2rem; margin-bottom: 20px;">A quiet invitation</h3>
-        <p style="font-weight: 300;">If you find yourself here, you are not starting from zero. You are already in the process of becoming.</p>
     </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Anchored.gr &bull; Zoi S Marmara</p>
-        <p style="margin-top: 12px; font-size: 0.8rem;">
-            <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a> | 
-            <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a> | 
-            <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
-        </p>
-    </footer>
-</div>
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="loop-card">
+            <span class="sub-text" style="margin-bottom:14px;">The STILL Framework</span>
+            <h3>A lightweight structure, simple enough to carry and strong enough to hold you.</h3>
+            <p>A practical loop for personal growth that returns people to awareness without demanding perfection.</p>
+            <div class="loop-items">
+                <div class="loop-item">Name your role</div>
+                <div class="loop-item">Take a step</div>
+                <div class="loop-item">Reflect</div>
+                <div class="loop-item">Reshape</div>
+                <div class="loop-item">Begin again</div>
+            </div>
+            <p><em>It is not linear. It moves in loops.</em></p>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="section-intro">
+            <span class="sub-text" style="margin-bottom:14px;">Healing & direction</span>
+            <h2>Healing as continuation, and growth as shared language</h2>
+            <p>
+                Anchored is shaped by interruption, return, and the human ability to continue even while incomplete.
+            </p>
+        </div>
+
+        <div class="dual-grid">
+            <div class="glass-card story-text">
+                <span class="accent-label">Healing as continuation</span>
+                <h3>Not a final state</h3>
+                <p>Anchored is shaped by stories of people who tried, stopped, doubted, and started again. People who did not need perfection, but a way to continue.</p>
+                <p>Here, healing is not a final state. It is not something you “achieve”. It is the moment you remain in the flow, even when things are incomplete.</p>
+            </div>
+
+            <div class="glass-card story-text">
+                <span class="accent-label">Where this is going</span>
+                <h3>From private practice to shared language</h3>
+                <p>Anchored is evolving from a personal framework to a shared language of growth. It moves from individual practice to collective experience.</p>
+                <p><strong>drift → presence</strong><br><strong>reaction → choice</strong><br><strong>identity given → identity lived</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="profile-wrap">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="profile-grid">
+            <div class="profile-copy">
+                <span class="accent-label">The creator</span>
+                <h2>Zoi S. Marmara</h2>
+                <p>Her focus sits at the intersection of technology, human-centered thinking, and personal development. With a background in product, research, and writing, she has spent years exploring how structure, reflection, and responsibility shape both systems and people.</p>
+                <p>Her path has consistently returned to one question: <em>How do people build a sense of inner ground in a world that constantly pulls them outward?</em></p>
+                <p>Anchored emerged from this question as an attempt to bring together clarity of thinking with lived human experience.</p>
+            </div>
+
+            <div class="profile-links">
+                <span class="accent-label">A quiet invitation</span>
+                <h3>You are not starting from zero</h3>
+                <ul class="link-list">
+                    <li>If you find yourself here, you are not beginning from absence.</li>
+                    <li>You are already in motion, already in process, already becoming.</li>
+                    <li>Anchored exists as a gentle return to that recognition.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="footer-inner">
+        <footer>
+            <p>&copy; 2026 Anchored.gr &nbsp; Zoi S Marmara</p>
+        </footer>
+    </div>
+</section>
 
 <script>
     const openBtn = document.getElementById('open-menu');
@@ -268,7 +591,7 @@
 
     openBtn.onclick = () => overlay.style.display = 'flex';
     closeBtn.onclick = () => overlay.style.display = 'none';
-    overlay.onclick = (e) => { if(e.target === overlay) overlay.style.display = 'none'; }
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.style.display = 'none'; };
 </script>
 
 </body>
