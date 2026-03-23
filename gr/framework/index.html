@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The STILL Framework™ | Anchored</title>
+    <title>Το STILL Framework | Anchored</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --white: #ffffff;
             --black: #0a0a0a;
             --accent: #d4a373;
-            --overlay: rgba(0, 0, 0, 0.45);
             --panel: rgba(255,255,255,0.05);
             --panel-border: rgba(255,255,255,0.14);
             --soft-text: rgba(255,255,255,0.78);
@@ -35,7 +34,7 @@
             font-family: 'Source Serif 4', serif;
             font-weight: 300;
             text-transform: uppercase;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.12em;
             text-shadow: 0 4px 30px rgba(0,0,0,0.45);
         }
 
@@ -84,7 +83,7 @@
             text-decoration: none;
             color: var(--white);
             text-transform: uppercase;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.18em;
             font-family: 'Source Serif 4', serif;
             text-align: center;
             padding: 0 24px;
@@ -129,24 +128,24 @@
         .sub-text {
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.7em;
+            letter-spacing: 0.38em;
             margin-bottom: 25px;
             display: block;
-            opacity: 0.8;
+            opacity: 0.82;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 8vw, 5.1rem);
+            font-size: clamp(2.3rem, 8vw, 4.8rem);
             line-height: 1.08;
             margin-bottom: 28px;
             font-weight: 200;
         }
 
         .hero-copy {
-            max-width: 780px;
+            max-width: 800px;
             margin: 0 auto;
             font-size: 1rem;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.02em;
             color: var(--soft-text);
         }
 
@@ -158,7 +157,7 @@
             text-decoration: none;
             font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.24em;
             transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
             margin-top: 40px;
             background: rgba(255,255,255,0.03);
@@ -168,7 +167,6 @@
         .btn-minimal:hover {
             background: var(--white);
             color: var(--black);
-            letter-spacing: 0.7em;
         }
 
         .content-section,
@@ -191,7 +189,7 @@
         }
 
         .section-intro {
-            max-width: 780px;
+            max-width: 840px;
             margin-bottom: 54px;
         }
 
@@ -219,7 +217,7 @@
         .intro-panel {
             border-radius: 32px;
             padding: 44px;
-            max-width: 860px;
+            max-width: 900px;
         }
 
         .intro-panel p {
@@ -248,7 +246,7 @@
             display: inline-block;
             font-size: 0.72rem;
             text-transform: uppercase;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.18em;
             color: var(--accent);
             margin-bottom: 18px;
         }
@@ -258,7 +256,7 @@
         .step-card h3,
         .cta-panel h2 {
             text-transform: none;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
             text-shadow: none;
         }
 
@@ -291,7 +289,7 @@
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.14);
             font-size: 0.86rem;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
@@ -327,7 +325,7 @@
             color: var(--white);
             font-family: 'Source Serif 4', serif;
             font-weight: 400;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             font-size: 0.82rem;
         }
@@ -335,7 +333,7 @@
         .comparison-table td:first-child {
             color: var(--accent);
             font-weight: 600;
-            width: 25%;
+            width: 26%;
         }
 
         .comparison-note {
@@ -393,7 +391,7 @@
             border-radius: 32px;
             padding: 56px 42px;
             text-align: center;
-            max-width: 860px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -418,11 +416,10 @@
 
         footer {
             position: relative;
-            bottom: auto;
             width: 100%;
             text-align: center;
             font-size: 0.6rem;
-            letter-spacing: 0.4em;
+            letter-spacing: 0.24em;
             opacity: 0.5;
         }
 
@@ -448,7 +445,9 @@
             .hero-copy { font-size: 0.96rem; }
             .footer-inner { padding-top: 90px; }
             .comparison-table { min-width: 560px; }
+            #mobile-overlay a { letter-spacing: 0.14em; }
         }
+		
 		.lang-btn {
 			display: inline-flex;
 			align-items: center;
@@ -480,18 +479,18 @@
 <body>
 
 <nav>
-    <a href="/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
-    <button class="menu-toggle" id="open-menu" aria-label="Open menu">
+    <a href="/gr/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+    <button class="menu-toggle" id="open-menu" aria-label="Άνοιγμα μενού">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
 </nav>
 
 <div id="mobile-overlay">
-    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Close menu">&times;</button>
-    <a href="/framework/index.html">The STILL Framework</a>
-    <a href="/research/index.html">Research</a>
-    <a href="/publications/index.html">Publications</a>
-    <a href="/about/index.html">About</a>
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Κλείσιμο μενού">&times;</button>
+    <a href="/gr/framework/index.html">Το STILL Framework</a>
+    <a href="/gr/research/index.html">Έρευνα</a>
+    <a href="/gr//publications/index.html">Δημοσιεύσεις</a>
+    <a href="/gr//about/index.html">Σχετικά</a>
 	<div class="lang-switch">
     <a href="/" class="lang-btn">EN</a>
     <a href="/gr/" class="lang-btn">GR</a>
@@ -501,12 +500,12 @@
 <section class="page-hero">
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="content-box">
-        <span class="sub-text">The STILL Framework™</span>
-        <h1 class="hero-title">A lightweight framework for presence, flow, and deliberate growth.</h1>
+        <span class="sub-text">Το STILL Framework</span>
+        <h1 class="hero-title">Ένα πλαίσιο για παρουσία, κατεύθυνση και συνειδητή εξέλιξη.</h1>
         <p class="hero-copy">
-            The STILL Framework™ is a practical structure for returning to yourself, again and again. It helps turn hesitation into action, chaos into clarity, and self-doubt into grounded commitment through rhythm, responsibility, and reflection.
+            Το STILL Framework είναι μια πρακτική δομή για να επιστρέφεις ξανά και ξανά σε αυτό που έχει ουσιαστική σημασία. Μετατρέπει τη διστακτικότητα σε κίνηση, τη σύγχυση σε καθαρότητα και την εσωτερική αμφιβολία σε πιο γειωμένη δέσμευση, μέσα από Ροές, Άγκυρες, Ανασκόπηση και επαναπροσδιορισμό.
         </p>
-        <a href="#overview" class="btn-minimal">Explore the framework</a>
+        <a href="#overview" class="btn-minimal">Εξερεύνησε το framework</a>
     </div>
 </section>
 
@@ -514,16 +513,16 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="container">
         <div class="section-intro">
-            <span class="sub-text" style="margin-bottom:14px;">Overview</span>
-            <h2>Standing with yourself and taking the next honest step</h2>
+            <span class="sub-text" style="margin-bottom:14px;">Επισκόπηση</span>
+            <h2>Να στέκεσαι με τον εαυτό σου και να κάνεις το επόμενο τίμιο βήμα</h2>
             <p>
-                STILL is built for people who need something simple enough to carry, steady enough to return to, and structured enough to keep growth from dissolving into abstraction.
+                Το STILL σχεδιάστηκε για ανθρώπους που χρειάζονται κάτι αρκετά απλό ώστε να το κουβαλούν μαζί τους, αρκετά σταθερό ώστε να επιστρέφουν σε αυτό, και αρκετά δομημένο ώστε η εξέλιξη να μη χάνεται μέσα στην αφαίρεση.
             </p>
         </div>
 
         <div class="intro-panel">
-            <p>The STILL Framework™ is a practical structure for returning to yourself, again and again. It helps you turn hesitation into action, chaos into clarity, and self-doubt into grounded commitment through rhythm, responsibility, and reflection.</p>
-            <p><strong>STILL is about standing with yourself and taking the next honest step.</strong></p>
+            <p>Το STILL Framework είναι ένας πρακτικός τρόπος να οργανώνεις την εσωτερική σου κίνηση σε μικρούς, επαναλαμβανόμενους κύκλους. Δεν στηρίζεται σε μια μεγάλη υπόσχεση μεταμόρφωσης, αλλά σε μια πιο ήπια λογική συνέχειας.</p>
+            <p><strong>Το STILL αφορά το να μένεις παρών, να καταλαβαίνεις τι συμβαίνει και να συνεχίζεις με περισσότερη ακρίβεια.</strong></p>
         </div>
     </div>
 </section>
@@ -532,79 +531,79 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1494500664877-981f47155032?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="container">
         <div class="section-intro">
-            <span class="sub-text" style="margin-bottom:14px;">How it works</span>
-            <h2>Short cycles, clear direction, real integration</h2>
+            <span class="sub-text" style="margin-bottom:14px;">Πώς λειτουργεί</span>
+            <h2>Σύντομοι κύκλοι, σαφής κατεύθυνση, ουσιαστική ενσωμάτωση</h2>
             <p>
-                STILL is a lightweight personal development framework built around short, focused cycles called Flows. Each Flow creates direction, steady movement, and a moment to turn experience into learning.
+                Το STILL είναι ένα ελαφρύ πλαίσιο προσωπικής ανάπτυξης που οργανώνεται γύρω από μικρές, εστιασμένες Ροές. Κάθε Ροή δημιουργεί κατεύθυνση, σταθερή κίνηση και μια στιγμή όπου η εμπειρία μπορεί να γίνει μάθηση.
             </p>
         </div>
 
         <div class="framework-layout">
             <div class="framework-card">
-                <span class="eyebrow">What is STILL?</span>
-                <h3>A circular rhythm rather than a linear system</h3>
-                <p>Instead of chasing one distant end point, STILL works through repeatable loops that help you move, review, reshape, and begin again with more clarity.</p>
+                <span class="eyebrow">Τι είναι το STILL;</span>
+                <h3>Ένας κυκλικός ρυθμός και όχι ένα γραμμικό σύστημα</h3>
+                <p>Αντί να κυνηγάς ένα μακρινό τελικό σημείο, το STILL δουλεύει μέσα από επαναλαμβανόμενους κύκλους που σε βοηθούν να κινηθείς, να αναστοχαστείς, να ξαναδώσεις σχήμα και να ξεκινήσεις πάλι με περισσότερη καθαρότητα.</p>
 
                 <div class="cycle-container" aria-label="STILL cycle">
-                    <div class="cycle-item">Flow</div>
+                    <div class="cycle-item">Ροή</div>
                     <span class="separator">→</span>
-                    <div class="cycle-item">Anchors</div>
+                    <div class="cycle-item">Άγκυρες</div>
                     <span class="separator">→</span>
-                    <div class="cycle-item">Review</div>
+                    <div class="cycle-item">Ανασκόπηση</div>
                     <span class="separator">→</span>
-                    <div class="cycle-item">Reshape</div>
+                    <div class="cycle-item">Επαναπροσδιορισμός</div>
                     <span class="separator">→</span>
-                    <div class="cycle-item">Next Flow</div>
+                    <div class="cycle-item">Επόμενη Ροή</div>
                 </div>
 
                 <div class="comparison-wrap">
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th>Focus</th>
-                                <th>Traditional Methods</th>
-                                <th>STILL Framework™</th>
+                                <th>Εστίαση</th>
+                                <th>Παραδοσιακές προσεγγίσεις</th>
+                                <th>STILL Framework</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Structure</td>
-                                <td>Linear, moving from goal to end point</td>
-                                <td>Circular, built around Flows and loops</td>
+                                <td>Δομή</td>
+                                <td>Γραμμική, από τον στόχο στο τελικό αποτέλεσμα</td>
+                                <td>Κυκλική, οργανωμένη γύρω από Ροές και επαναλήψεις</td>
                             </tr>
                             <tr>
-                                <td>Application</td>
-                                <td>Reflective and conceptual</td>
-                                <td>Experiential and measurable</td>
+                                <td>Εφαρμογή</td>
+                                <td>Περισσότερο εννοιολογική και αναστοχαστική</td>
+                                <td>Εμπειρική, πρακτική και παρατηρήσιμη</td>
                             </tr>
                             <tr>
-                                <td>Role</td>
-                                <td>Passive participant</td>
-                                <td>Active developer</td>
+                                <td>Ρόλος του ανθρώπου</td>
+                                <td>Συμμετέχων που ακολουθεί</td>
+                                <td>Ενεργός δημιουργός της διαδικασίας</td>
                             </tr>
                             <tr>
-                                <td>Failure</td>
-                                <td>Reflection without consequence</td>
-                                <td>Iteration and integration</td>
+                                <td>Αποτυχία</td>
+                                <td>Αναστοχασμός χωρίς αναγκαία μεταβολή</td>
+                                <td>Επανάληψη, μάθηση και ενσωμάτωση</td>
                             </tr>
                             <tr>
-                                <td>Time / Progress</td>
-                                <td>Session-based</td>
-                                <td>Continuous and embedded in daily life</td>
+                                <td>Χρόνος και πρόοδος</td>
+                                <td>Συχνά βασισμένα σε μεμονωμένες συνεδρίες</td>
+                                <td>Συνεχής πορεία, ενταγμένη στην καθημερινή ζωή</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <p class="comparison-note">Each Flow provides a clear direction, steady steps, and a moment to turn experience into learning.</p>
+                <p class="comparison-note">Κάθε Ροή δίνει σαφή κατεύθυνση, σταθερά βήματα και μια στιγμή όπου η εμπειρία μετατρέπεται σε κατανόηση.</p>
             </div>
 
             <div class="detail-card">
-                <span class="tag">Why it matters</span>
-                <h3>A framework you can actually carry</h3>
-                <p>Many systems fail because they are too heavy to carry or too vague to hold when life becomes difficult.</p>
-                <p>STILL is simple enough to remember, flexible enough to adapt, and structured enough to prevent drift.</p>
-                <p>It is designed to support presence without collapsing into passivity, and movement without forcing speed.</p>
+                <span class="tag">Γιατί έχει σημασία</span>
+                <h3>Ένα πλαίσιο που μπορείς πραγματικά να κουβαλάς μαζί σου</h3>
+                <p>Πολλά συστήματα αποτυγχάνουν επειδή είναι είτε πολύ βαριά για να τα αντέξεις, είτε πολύ αόριστα για να σε κρατήσουν όταν η ζωή δυσκολεύει.</p>
+                <p>Το STILL είναι αρκετά απλό ώστε να το θυμάσαι, αρκετά ευέλικτο ώστε να προσαρμόζεται, και αρκετά δομημένο ώστε να αποτρέπει τη διάχυση.</p>
+                <p>Στηρίζει την παρουσία χωρίς να σε αφήνει αδρανή και την κίνηση χωρίς να επιβάλλει βιασύνη.</p>
             </div>
         </div>
     </div>
@@ -614,36 +613,48 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="container">
         <div class="section-intro">
-            <span class="sub-text" style="margin-bottom:14px;">Core elements</span>
-            <h2>Anchors, roles, and the shape of participation</h2>
+            <span class="sub-text" style="margin-bottom:14px;">Κεντρικά στοιχεία</span>
+            <h2>Άγκυρες, ρόλοι και ο τρόπος συμμετοχής</h2>
             <p>
-                STILL works through a few simple elements that create continuity. They help translate inner experience into embodied action, shared structure, and meaningful review.
+                Το STILL λειτουργεί μέσα από λίγα, καθαρά στοιχεία που δημιουργούν συνέχεια. Βοηθούν να μεταφράζεται η εσωτερική εμπειρία σε εμπράγματη πράξη, σε κοινή δομή και σε ουσιαστική ανασκόπηση.
             </p>
         </div>
 
         <div class="two-column-grid">
             <article class="step-card">
-                <span class="tag">Anchors</span>
-                <h3>Small, repeatable actions that keep you steady</h3>
-                <p>Anchors are the practices that hold the Flow in place, like bolts on a climbing route. They help you remain connected to what is happening instead of drifting away from it.</p>
+                <span class="tag">Άγκυρες</span>
+                <h3>Μικρές, επαναλαμβανόμενες πράξεις που σε κρατούν σταθερό</h3>
+                <p>Οι Άγκυρες είναι οι πρακτικές που κρατούν τη Ροή στη θέση της. Βοηθούν να μένεις σε επαφή με αυτό που συμβαίνει, αντί να απομακρύνεσαι από αυτό.</p>
                 <ul class="feature-list">
-                    <li><strong>Awareness:</strong> noticing and naming what is happening.</li>
-                    <li><strong>Embodiment:</strong> grounding presence in the body.</li>
-                    <li><strong>Action:</strong> taking a concrete step that proves movement.</li>
-                    <li><strong>Reflection:</strong> pausing to learn, integrate, and reshape.</li>
+                    <li><strong>Επίγνωση:</strong> παρατηρείς και ονομάζεις ό,τι συμβαίνει.</li>
+                    <li><strong>Ενσώματη παρουσία:</strong> γειώνεις την προσοχή στο σώμα και στην παρούσα στιγμή.</li>
+                    <li><strong>Πράξη:</strong> κάνεις ένα συγκεκριμένο βήμα που αποδεικνύει κίνηση.</li>
+                    <li><strong>Ανασκόπηση:</strong> σταματάς, μαθαίνεις, ενσωματώνεις και επαναπροσδιορίζεις.</li>
                 </ul>
             </article>
 
             <article class="step-card">
-                <span class="tag">Roles</span>
-                <h3>Three ways of showing up inside the process</h3>
-                <p>STILL works through three perspectives of participation. Together, they support direction, responsibility, and reflective depth.</p>
+                <span class="tag">Ρόλοι</span>
+                <h3>Τρεις τρόποι με τους οποίους εμφανίζεσαι μέσα στη διαδικασία</h3>
+                <p>Το STILL δουλεύει μέσα από τρεις διαφορετικές θέσεις συμμετοχής. Μαζί δημιουργούν κατεύθυνση, ευθύνη και βάθος αναστοχασμού.</p>
                 <ul class="feature-list">
-                    <li><strong>You:</strong> the active self-creator who runs the Flow.</li>
-                    <li><strong>Flow Owner:</strong> the guide who frames direction and scope.</li>
-                    <li><strong>STILL Coach:</strong> the reflective partner holding space for learning.</li>
+                    <li><strong>Εσύ:</strong> ο ενεργός άνθρωπος που τρέχει τη Ροή.</li>
+                    <li><strong>Flow Owner:</strong> εκείνος που πλαισιώνει τη διαδρομή και το εύρος της.</li>
+                    <li><strong>STILL Coach:</strong> ο αναστοχαστικός συνοδοιπόρος που κρατά χώρο για μάθηση.</li>
                 </ul>
             </article>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="cta-panel">
+            <span class="sub-text" style="margin-bottom:18px;">Στην πράξη</span>
+            <h2>Δες πώς μια Ροή ξεδιπλώνεται σε πραγματικό παράδειγμα</h2>
+            <p>Από την αρνητική σκέψη στην ελπιδοφόρα προοπτική, βήμα προς βήμα, μέσα από Άγκυρες, αναδιατύπωση, πράξη και ανασκόπηση.</p>
+            <a href="../still-framework-in-practice.html" class="btn-minimal">Το STILL Framework στην πράξη</a>
         </div>
     </div>
 </section>
@@ -652,10 +663,10 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="container">
         <div class="cta-panel">
-            <span class="sub-text" style="margin-bottom:18px;">Invitation</span>
-            <h2>Begin your cumulative meaning capital.</h2>
-            <p>Join a limited community of people in transition.</p>
-            <a href="#" class="btn-minimal">Invitations will open soon</a>
+            <span class="sub-text" style="margin-bottom:18px;">Πρόσκληση</span>
+            <h2>Μπες σε μια πιο γειωμένη διαδικασία προσωπικής εξέλιξης</h2>
+            <p>Το Anchored App σχεδιάζεται ως ένας ψηφιακός χώρος για παύση, προσανατολισμό και ήπια εσωτερική κίνηση.</p>
+            <a href="#" class="btn-minimal">Οι συμμετοχές θα ανοίξουν σύντομα</a>
         </div>
     </div>
 </section>
@@ -664,7 +675,7 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="footer-inner">
         <footer>
-            <p>&copy; 2026 ANCHORED &bull; ZOI S MARMARA</p>
+            <p>&copy; 2026 ANCHORED • ZOI S MARMARA</p>
             <div style="margin-top: 15px;">
                 <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a>
                 <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a>

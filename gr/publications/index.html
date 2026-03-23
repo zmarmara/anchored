@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications | Anchored</title>
+    <title>Δημοσιεύσεις | Anchored</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -33,7 +33,7 @@
             font-family: 'Source Serif 4', serif;
             font-weight: 300;
             text-transform: uppercase;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.14em;
             text-shadow: 0 4px 30px rgba(0,0,0,0.45);
         }
 
@@ -74,15 +74,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 40px;
+            gap: 34px;
         }
 
         #mobile-overlay a {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             text-decoration: none;
             color: var(--white);
             text-transform: uppercase;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.28em;
             font-family: 'Source Serif 4', serif;
             text-align: center;
             padding: 0 24px;
@@ -128,15 +128,15 @@
         .sub-text {
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.7em;
+            letter-spacing: 0.5em;
             margin-bottom: 25px;
             display: block;
             opacity: 0.8;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 8vw, 5.2rem);
-            line-height: 1.08;
+            font-size: clamp(2.2rem, 7vw, 4.8rem);
+            line-height: 1.12;
             margin-bottom: 28px;
             font-weight: 200;
         }
@@ -145,7 +145,7 @@
             max-width: 760px;
             margin: 0 auto;
             font-size: 1rem;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.02em;
             color: var(--soft-text);
         }
 
@@ -157,7 +157,7 @@
             text-decoration: none;
             font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.32em;
             transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
             margin-top: 40px;
             background: rgba(255,255,255,0.03);
@@ -167,7 +167,7 @@
         .btn-minimal:hover {
             background: var(--white);
             color: var(--black);
-            letter-spacing: 0.7em;
+            letter-spacing: 0.4em;
         }
 
         .content-section,
@@ -197,7 +197,7 @@
         }
 
         .section-intro h2 {
-            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
             margin-bottom: 18px;
             line-height: 1.22;
         }
@@ -230,7 +230,7 @@
             display: inline-block;
             font-size: 0.72rem;
             text-transform: uppercase;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.18em;
             color: var(--accent);
             margin-bottom: 18px;
         }
@@ -239,7 +239,7 @@
         .publication-card h3,
         .profile-copy h2 {
             text-transform: none;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.03em;
             text-shadow: none;
         }
 
@@ -339,7 +339,7 @@
             font-size: 1.2rem;
             margin-bottom: 16px;
             text-transform: none;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
         }
 
         .link-list {
@@ -371,7 +371,7 @@
             width: 100%;
             text-align: center;
             font-size: 0.6rem;
-            letter-spacing: 0.4em;
+            letter-spacing: 0.28em;
             opacity: 0.5;
         }
 
@@ -398,7 +398,7 @@
             .hero-copy { font-size: 0.96rem; }
             .footer-inner { padding-top: 90px; }
         }
-		.lang-btn {
+				.lang-btn {
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -429,18 +429,18 @@
 <body>
 
 <nav>
-    <a href="/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
-    <button class="menu-toggle" id="open-menu" aria-label="Open menu">
+    <a href="/gr/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+    <button class="menu-toggle" id="open-menu" aria-label="Άνοιγμα μενού">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
 </nav>
 
 <div id="mobile-overlay">
-    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Close menu">&times;</button>
-    <a href="/framework/index.html">The STILL Framework</a>
-    <a href="/research/index.html">Research</a>
-    <a href="/publications/index.html">Publications</a>
-    <a href="/about/index.html">About</a>
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Κλείσιμο μενού">&times;</button>
+    <a href="/gr/framework/index.html">Το STILL Framework</a>
+    <a href="/gr/research/index.html">Έρευνα</a>
+    <a href="/gr/publications/index.html">Δημοσιεύσεις</a>
+    <a href="/gr/about/index.html">Σχετικά</a>
 	<div class="lang-switch">
     <a href="/" class="lang-btn">EN</a>
     <a href="/gr/" class="lang-btn">GR</a>
@@ -450,12 +450,12 @@
 <section class="page-hero">
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="content-box">
-        <span class="sub-text">Publications</span>
-        <h1 class="hero-title">Writing as a way to think, observe, and give form to experience.</h1>
+        <span class="sub-text">Δημοσιεύσεις</span>
+        <h1 class="hero-title">Η γραφή ως τρόπος σκέψης, παρατήρησης και μορφοποίησης της εμπειρίας.</h1>
         <p class="hero-copy">
-            Some of this work is directly connected to Anchored, Self-Equity, and the STILL Framework. Other texts move across philosophy, healing, ethics, and lived human experience. Together, they trace an ongoing exploration of how people understand themselves and shape who they become.
+            Κάποια από αυτά τα κείμενα συνδέονται άμεσα με το Anchored, το Self Equity και το STILL Framework. Άλλα κινούνται ανάμεσα στη φιλοσοφία, την ίαση, την ηθική και τη βιωμένη ανθρώπινη εμπειρία. Μαζί συνθέτουν μια διαρκή αναζήτηση γύρω από το πώς ο άνθρωπος κατανοεί τον εαυτό του και πώς διαμορφώνει αυτό που γίνεται.
         </p>
-        <a href="#featured" class="btn-minimal">Explore the work</a>
+        <a href="#featured" class="btn-minimal">Περιήγηση στο έργο</a>
     </div>
 </section>
 
@@ -463,31 +463,31 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="container">
         <div class="section-intro">
-            <span class="sub-text" style="margin-bottom:14px;">Featured</span>
-            <h2>Anchored, Self-Equity & Research</h2>
+            <span class="sub-text" style="margin-bottom:14px;">Κεντρική δημοσίευση</span>
+            <h2>Anchored, Self Equity και ερευνητική κατεύθυνση</h2>
             <p>
-                This section brings together the publications most closely related to the conceptual development of Anchored. It includes work on Self-Equity, the STILL Framework, and the broader research direction behind the app.
+                Εδώ συγκεντρώνονται οι δημοσιεύσεις που συνδέονται πιο άμεσα με τη θεωρητική συγκρότηση του Anchored. Περιλαμβάνουν το Self Equity, το STILL Framework και την ευρύτερη ερευνητική κατεύθυνση που υποστηρίζει την εφαρμογή.
             </p>
         </div>
 
         <div class="featured-publication">
             <div>
-                <span class="featured-meta">Research Publication</span>
-                <h3>From Brand Equity to Self-Equity</h3>
-                <p><em>Applying Keller’s CBBE Model to Personal Growth</em></p>
+                <span class="featured-meta">Ερευνητική δημοσίευση</span>
+                <h3>Από το Brand Equity στο Self Equity</h3>
+                <p><em>Εφαρμόζοντας το μοντέλο CBBE του Keller στην προσωπική ανάπτυξη</em></p>
                 <p>
-                    This paper explores how a model originally designed to explain how brands build value over time can be reinterpreted inward, as a way of understanding how people build trust, meaning, and resonance within themselves.
+                    Το κείμενο αυτό διερευνά πώς ένα μοντέλο που σχεδιάστηκε αρχικά για να εξηγήσει πώς τα brands οικοδομούν αξία στον χρόνο μπορεί να στραφεί προς τα μέσα, ως ένας τρόπος να σκεφτούμε πώς οι άνθρωποι καλλιεργούν εμπιστοσύνη, νόημα και απήχηση μέσα στον ίδιο τους τον εαυτό.
                 </p>
                 <p>
-                    It forms part of the theoretical ground of Anchored and opens a research path around identity formation, reflection, and structured personal development.
+                    Αποτελεί μέρος του θεωρητικού υποβάθρου του Anchored και ανοίγει μια ερευνητική διαδρομή γύρω από τη διαμόρφωση της ταυτότητας, τον στοχασμό και τη δομημένη προσωπική εξέλιξη.
                 </p>
-                <a class="text-link" href="https://www.researchgate.net/publication/395706791_From_Brand_Equity_to_Self-Equity_Applying_Keller's_CBBE_Model_to_Personal_Growth" target="_blank" rel="noopener noreferrer">Read on ResearchGate</a>
+                <a class="text-link" href="https://www.researchgate.net/publication/395706791_From_Brand_Equity_to_Self-Equity_Applying_Keller's_CBBE_Model_to_Personal_Growth" target="_blank" rel="noopener noreferrer">Ανάγνωση στο ResearchGate</a>
             </div>
 
             <div class="featured-side">
-                <span class="tag">Why it matters</span>
+                <span class="tag">Γιατί έχει σημασία</span>
                 <p>
-                    This publication helps position Anchored not only as a digital environment, but as part of a wider inquiry into how structure, reflection, and repeated action can shape lived identity.
+                    Η δημοσίευση αυτή βοηθά να τοποθετηθεί το Anchored όχι μόνο ως ένα ψηφιακό περιβάλλον, αλλά και ως μέρος μιας ευρύτερης διερεύνησης για το πώς η δομή, ο αναστοχασμός και η επαναλαμβανόμενη πράξη διαμορφώνουν τη βιωμένη ταυτότητα.
                 </p>
             </div>
         </div>
@@ -498,46 +498,46 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1494500664877-981f47155032?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="container">
         <div class="section-intro">
-            <span class="sub-text" style="margin-bottom:14px;">Selected Work</span>
-            <h2>Books, philosophy, and long-form writing</h2>
+            <span class="sub-text" style="margin-bottom:14px;">Επιλεγμένο έργο</span>
+            <h2>Βιβλία, φιλοσοφία και εκτενής γραφή</h2>
             <p>
-                These publications extend beyond the app itself. They reflect a broader body of work around healing, existential thought, ethics, and the search for meaning in lived experience.
+                Οι δημοσιεύσεις αυτές εκτείνονται πέρα από την εφαρμογή. Αντανακλούν ένα ευρύτερο σώμα δουλειάς γύρω από την ίαση, την υπαρξιακή σκέψη, την ηθική και την αναζήτηση νοήματος μέσα στη βιωμένη εμπειρία.
             </p>
         </div>
 
         <div class="publications-grid">
             <article class="publication-card">
-                <span class="tag">Philosophy</span>
+                <span class="tag">Φιλοσοφία</span>
                 <h3>At the Table with Artificial Intelligence: An Evening with Wittgenstein, Hofstadter, Chalmers... and AI</h3>
                 <p>
-                    This manuscript, written in Greek, explores the intersection of philosophy and Artificial Intelligence through an imagined symposium with Wittgenstein, Hofstadter, Chalmers, and AI itself. It raises fundamental questions: Can there be thought without consciousness? Is existence necessary for intelligence? If AI does not perceive the world, how can it understand?
+                    Χειρόγραφο στα ελληνικά που εξερευνά τη συνάντηση της φιλοσοφίας με την Τεχνητή Νοημοσύνη μέσα από ένα φανταστικό συμπόσιο με τον Wittgenstein, τον Hofstadter, τον Chalmers και την ίδια την ΤΝ. Θέτει ερωτήματα όπως αν μπορεί να υπάρξει σκέψη χωρίς συνείδηση, αν η ύπαρξη είναι αναγκαία για τη νοημοσύνη και πώς μπορεί να υπάρξει κατανόηση χωρίς βίωμα του κόσμου.
                 </p>
-                <a class="text-link" href="https://philpapers.org/rec/MARATT-23" target="_blank" rel="noopener noreferrer">View on PhilPapers</a>
+                <a class="text-link" href="https://philpapers.org/rec/MARATT-23" target="_blank" rel="noopener noreferrer">Προβολή στο PhilPapers</a>
             </article>
 
             <article class="publication-card">
-                <span class="tag">Philosophy</span>
+                <span class="tag">Φιλοσοφία</span>
                 <h3>Beyond the Cave: Heidegger, Moral Intuition, and the Question of AI in Philosophy</h3>
                 <p>
-                    This paper investigates whether artificial intelligence can meaningfully engage in philosophy, not as a tool but as a participant in the questioning of Being.
+                    Κείμενο που εξετάζει αν η τεχνητή νοημοσύνη μπορεί να εμπλακεί ουσιαστικά στη φιλοσοφία, όχι μόνο ως εργαλείο, αλλά ως συνομιλητής μέσα στο ίδιο το ερώτημα του Είναι.
                 </p>
-                <a class="text-link" href="https://philpapers.org/rec/ZOIBTC" target="_blank" rel="noopener noreferrer">View on PhilPapers</a>
+                <a class="text-link" href="https://philpapers.org/rec/ZOIBTC" target="_blank" rel="noopener noreferrer">Προβολή στο PhilPapers</a>
             </article>
 
             <article class="publication-card">
-                <span class="tag">Book</span>
-                <h3>200 Valuable Things</h3>
+                <span class="tag">Βιβλίο</span>
+                <h3>200 Πολύτιμα Πράγματα</h3>
                 <p>
-                    A collection of healing-centered reflections on presence, tenderness, and the quiet value of everyday life. I share this work personally. Feel free to ask for it.
+                    Μια συλλογή από θεραπευτικού χαρακτήρα στοχασμούς γύρω από την παρουσία, την τρυφερότητα και την ήσυχη αξία της καθημερινής ζωής. Το έργο αυτό το μοιράζομαι προσωπικά.
                 </p>
-                <a class="text-link" href="#" onclick="revealEmail(); return false;">Get in touch to read</a>
+                <a class="text-link" href="#" onclick="revealEmail(); return false;">Επικοινωνία για ανάγνωση</a>
             </article>
 
             <article class="publication-card">
-                <span class="tag">Ongoing Work</span>
-                <h3>Essays, Notes & Future Research</h3>
+                <span class="tag">Σε εξέλιξη</span>
+                <h3>Δοκίμια, σημειώσεις και μελλοντική έρευνα</h3>
                 <p>
-                    This space includes essays on Self-Equity, AI Ethics, healing stories, and future research emerging from Anchored.
+                    Εδώ εντάσσονται κείμενα γύρω από το Self Equity, την ηθική της Τεχνητής Νοημοσύνης, θεραπευτικές ιστορίες και μελλοντικές ερευνητικές κατευθύνσεις που αναδύονται μέσα από το Anchored.
                 </p>
                 <p><a class="text-link" href="https://medium.com/philosophytoday/i-asked-ai-to-think-it-asked-what-it-means-to-be-97a23922cee8" target="_blank" rel="noopener noreferrer">I Asked AI to Think — It Asked What It Means to Be</a></p>
                 <p><a class="text-link" href="https://medium.com/generative-ai/were-teaching-machines-to-think-fast-can-we-still-think-slowly-8a3f8f20ca96" target="_blank" rel="noopener noreferrer">We’re Teaching Machines to Think Fast. Can We Still Think Slowly?</a></p>
@@ -552,22 +552,22 @@
     <div class="container">
         <div class="profile-grid">
             <div class="profile-copy">
-                <h2>Professional Profile</h2>
+                <h2>Επαγγελματικό προφίλ</h2>
                 <p>
-                    Alongside this writing and research work, I also maintain a professional profile shaped by product thinking, research, writing, and human-centered design.
+                    Παράλληλα με τη συγγραφική και ερευνητική αυτή δουλειά, υπάρχει και ένα επαγγελματικό προφίλ που έχει διαμορφωθεί μέσα από το product thinking, την έρευνα, τη γραφή και τον ανθρωποκεντρικό σχεδιασμό.
                 </p>
                 <p>
-                    Anchored grows from that intersection: a space where conceptual clarity, lived experience, and thoughtful structure meet.
+                    Το Anchored γεννιέται ακριβώς σε αυτή τη συνάντηση, εκεί όπου η εννοιολογική σαφήνεια, η βιωμένη εμπειρία και η προσεκτική δομή συναντιούνται.
                 </p>
                 <p>
-                    For collaborators, employers, or anyone who would like a broader view of my background, the links here offer a quieter bridge into my professional path.
+                    Για συνεργάτες, εργοδότες ή για όποιον θα ήθελε μια ευρύτερη εικόνα του υπόβαθρού μου, οι σύνδεσμοι εδώ λειτουργούν ως μια ήσυχη γέφυρα προς την επαγγελματική μου διαδρομή.
                 </p>
             </div>
 
             <div class="profile-links">
-                <h3>Profile & CV</h3>
+                <h3>Προφίλ και βιογραφικό</h3>
                 <ul class="link-list">
-                    <li><a class="light-link" href="/cv/index.html">View CV page</a></li>
+                    <li><a class="light-link" href="/cv/index.html">Σελίδα βιογραφικού (EN)</a></li>
                     <li><a class="light-link" href="https://www.linkedin.com/in/zoemarmara/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                     <li><a class="light-link" href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
                     <li><a class="light-link" href="https://philpeople.org/profiles/zoi-marmara" target="_blank" rel="noopener noreferrer">PhilPapers</a></li>
@@ -581,7 +581,7 @@
     <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="footer-inner">
         <footer>
-            <p>&copy; 2026 ANCHORED &bull; ZOI S MARMARA</p>
+            <p>&copy; 2026 ANCHORED • ZOI S MARMARA</p>
             <div style="margin-top: 15px;">
                 <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a>
                 <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a>

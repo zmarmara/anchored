@@ -440,6 +440,32 @@
             .footer-inner { padding-top: 90px; }
             .quote-panel { padding: 56px 24px; }
         }
+		.lang-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 48px;
+			height: 28px;
+			padding: 0 12px;
+			border: 1px solid rgba(255,255,255,0.45);
+			text-decoration: none;
+			color: var(--white);
+			font-size: 0.55rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			background: transparent;
+			transition: all 0.3s ease;
+		}
+
+		.lang-btn:hover {
+			background: rgba(255,255,255,0.08);
+		}
+
+		.lang-btn.active {
+			background: var(--white);
+			color: var(--black);
+			border-color: var(--white);
+		}
     </style>
 </head>
 <body>
@@ -457,6 +483,10 @@
     <a href="/research/index.html">Research</a>
     <a href="/publications/index.html">Publications</a>
     <a href="/about/index.html">About</a>
+	<div class="lang-switch">
+    <a href="/" class="lang-btn">EN</a>
+    <a href="/gr/" class="lang-btn">GR</a>
+    </div>
 </div>
 
 <section class="page-hero">
@@ -614,10 +644,11 @@
             <article class="credential-card">
                 <h3>Professional credentials</h3>
                 <ul class="credentials-list">
-                    <li>Professional Scrum Product Owner (PSPO I)</li>
-                    <li>Professional Scrum Master (PSM I)</li>
-                    <li>ITIL 4 Foundation Certificate</li>
-                </ul>
+				<li>Professional Scrum Product Owner (PSPO I)</li>
+				<li>Professional Scrum Master (PSM I)</li>
+				<li>ITIL 4 Foundation Certificate</li>
+				<li><strong>Certified Professional Coach (CPC)</strong> – training in structured one-to-one work, reflection, and guided human development</li>
+</ul>
             </article>
         </div>
     </div>

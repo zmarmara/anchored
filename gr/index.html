@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchored | Το Anchored App και το STILL Framework</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,500;1,8..60,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --accent: #d4a373;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.58) contrast(1.08);
+            transition: transform 12s linear;
+        }
+
+        section:hover .bg-image { transform: scale(1.15); }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        .content-box {
+            max-width: 1100px;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 10vw, 5.2rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 200;
+        }
+
+        .sub-text {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7em;
+            margin-bottom: 25px;
+            display: block;
+            opacity: 0.84;
+        }
+
+        .lead {
+            font-weight: 200;
+            letter-spacing: 0.04em;
+            max-width: 760px;
+            margin: 0 auto;
+            opacity: 0.92;
+            font-size: 1rem;
+        }
+
+        .btn-minimal {
+            display: inline-block;
+            padding: 22px 60px;
+            border: 0.5px solid rgba(255,255,255,0.7);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            margin-top: 40px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-minimal:hover {
+            background: var(--white);
+            color: var(--black);
+            letter-spacing: 0.65em;
+        }
+
+        .framework-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        .framework-item {
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 15px;
+        }
+
+        .framework-item span {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            opacity: 0.5;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .framework-item h3 {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .framework-item p {
+            font-size: 0.88rem;
+            opacity: 0.76;
+            font-weight: 200;
+        }
+
+        #mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 34px;
+        }
+
+        #mobile-overlay a {
+            font-size: 1.05rem;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.38em;
+            font-family: 'Source Serif 4', serif;
+            text-align: center;
+        }
+
+        .quote {
+            font-style: italic;
+            text-transform: none;
+            font-size: 2rem;
+            line-height: 1.5;
+            max-width: 920px;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            opacity: 0.5;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (min-width: 850px) {
+            .framework-list { grid-template-columns: repeat(4, 1fr); gap: 40px; }
+            section { padding: 100px; }
+        }
+				.lang-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 48px;
+			height: 28px;
+			padding: 0 12px;
+			border: 1px solid rgba(255,255,255,0.45);
+			text-decoration: none;
+			color: var(--white);
+			font-size: 0.55rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			background: transparent;
+			transition: all 0.3s ease;
+		}
+
+		.lang-btn:hover {
+			background: rgba(255,255,255,0.08);
+		}
+
+		.lang-btn.active {
+			background: var(--white);
+			color: var(--black);
+			border-color: var(--white);
+		}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/gr/" class="nav-logo"><img src="anchored-app.png" alt="Anchored"></a>
+    <button class="menu-toggle" id="open-menu" aria-label="Άνοιγμα μενού">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+</nav>
+
+<div id="mobile-overlay">
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Κλείσιμο μενού">&times;</button>
+    <a href="/gr/framework/index.html">Το STILL Framework</a>
+    <a href="/gr/research/index.html">Έρευνα</a>
+    <a href="/gr//publications/index.html">Δημοσιεύσεις</a>
+    <a href="/gr//about/index.html">Σχετικά</a>
+	<div class="lang-switch">
+    <a href="/" class="lang-btn">EN</a>
+    <a href="/gr/" class="lang-btn">GR</a>
+    </div>
+</div>
+
+<div class="scroll-container">
+
+    <section id="hero">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Anchored App</span>
+            <h1 class="hero-title">Ένας ψηφιακός χώρος για παύση, προσανατολισμό και ήπια εσωτερική κίνηση.</h1>
+            <p class="lead">Το Anchored App σχεδιάζεται ως ένα περιβάλλον στοχασμού και πρακτικής, όπου το άτομο μπορεί να δουλεύει με μικρούς κύκλους προσωπικής εξέλιξης, να παρατηρεί την πρόοδό του και να επιστρέφει με συνέπεια σε ό,τι έχει πραγματικά σημασία.</p>
+            <a href="#research" class="btn-minimal">Οι συμμετοχές ανοίγουν σύντομα</a>
+        </div>
+    </section>
+
+    <section id="still">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Still Framework</span>
+            <h2 style="font-size: 1.85rem; margin-bottom: 20px;">Το θεωρητικό και πρακτικό θεμέλιο του Anchored.</h2>
+            <p style="font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.78; max-width: 780px; margin: 0 auto;">Το STILL Framework είναι ένα ευέλικτο πλαίσιο προσωπικής ανάπτυξης, βασισμένο σε Flows, Anchors, ανασκόπηση και επαναπροσδιορισμό. Στόχος του είναι να βοηθήσει το άτομο να περνά από τη σύγχυση στη διαύγεια, από τον δισταγμό στη δράση και από την αποσπασματική προσπάθεια σε έναν πιο σταθερό εσωτερικό ρυθμό.</p>
+
+            <div class="framework-list">
+                <div class="framework-item"><span>01</span><h3>Flow</h3><p>Μια σύντομη, σαφώς οριοθετημένη διαδρομή με έναν μόνο στόχο κάθε φορά.</p></div>
+                <div class="framework-item"><span>02</span><h3>Anchors</h3><p>Μικρά στηρίγματα που κρατούν την πρόθεση ζωντανή και μετατρέπουν τη σκέψη σε πράξη.</p></div>
+                <div class="framework-item"><span>03</span><h3>Review</h3><p>Μια παύση αναστοχασμού για να φανεί τι λειτούργησε, τι όχι και τι αξίζει να μείνει.</p></div>
+                <div class="framework-item"><span>04</span><h3>Renewal</h3><p>Η συνέχεια του κύκλου, όπου η μάθηση γίνεται νέα κατεύθυνση και βαθύτερη απήχηση.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="app">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Τι είναι το Anchored</span>
+            <h2 class="quote">Το Anchored App δεν σχεδιάζεται ως ακόμη ένα εργαλείο παραγωγικότητας, αλλά ως ένας ήρεμος ψηφιακός συνοδοιπόρος.</h2>
+            <div style="margin-top: 42px; display: flex; flex-direction: column; gap: 18px; align-items: center; max-width: 760px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 0.92rem; font-weight: 200; opacity: 0.84;">Σκοπός του είναι να δώσει μορφή στις βασικές έννοιες του STILL μέσα από μια εμπειρία που βοηθά το άτομο να ορίζει ένα Flow, να επιλέγει Anchors, να κρατά σημειώσεις αναστοχασμού και να βλέπει πώς μικρές, επαναλαμβανόμενες κινήσεις αρχίζουν να αποκτούν νόημα.</p>
+                <p style="font-size: 0.82rem; letter-spacing: 0.18em; opacity: 0.64;">ΠΡΟΣΩΠΙΚΗ ΕΞΕΛΙΞΗ • ΣΤΟΧΑΣΜΟΣ • ΡΥΘΜΟΣ • ΠΑΡΟΥΣΙΑ</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Research Stage</span>
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Το Anchored βρίσκεται σε πρώιμο ερευνητικό στάδιο.</h2>
+            <p style="max-width: 820px; margin: 0 auto; font-weight: 200; letter-spacing: 0.05em; font-size: 0.96rem; opacity: 0.88;">Αυτή την περίοδο, το έργο διαμορφώνεται θεωρητικά και ερευνητικά. Εξετάζεται πώς το STILL μπορεί να μελετηθεί ως επαναλήψιμο πλαίσιο με μικρής κλίμακας πειράματα, διαχρονικά δεδομένα και πιθανές εφαρμογές σε coaching, mentoring, εκπαίδευση, ομάδες και ψηφιακά περιβάλλοντα.</p>
+            <p style="max-width: 760px; margin: 22px auto 0; font-weight: 200; letter-spacing: 0.04em; font-size: 0.9rem; opacity: 0.75;">Η τρέχουσα φάση εστιάζει στη διαμόρφωση του πλαισίου, στη σταδιακή αποσαφήνιση της εμπειρίας της εφαρμογής και στην προετοιμασία μιας πρώτης δοκιμαστικής συμμετοχής.</p>
+            <a href="#invite" class="btn-minimal">Μάθε περισσότερα</a>
+        </div>
+    </section>
+
+    <section id="invite">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Open Soon</span>
+            <h2 style="font-size: 2rem;">Οι συμμετοχές θα ανοίξουν σύντομα.</h2>
+            <p style="margin-top: 20px; font-weight: 200; letter-spacing: 0.14em; font-size: 0.88rem; max-width: 700px; margin-left: auto; margin-right: auto;">Σύντομα θα ανοίξει μια πρώτη περιορισμένη φάση συμμετοχών για ανθρώπους που ενδιαφέρονται να γνωρίσουν το Anchored και να παρακολουθήσουν από κοντά την εξέλιξη του STILL Framework.</p>
+            <a href="/framework/index.html" class="btn-minimal">Το STILL Framework</a>
+        </div>
+        <footer>
+            <p>&copy; 2026 ANCHORED • ZOI S MARMARA</p>
+            <div style="margin-top: 15px;">
+                <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a>
+                <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a>
+                <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const overlay = document.getElementById('mobile-overlay');
+
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+
+    document.querySelectorAll('.btn-minimal').forEach(btn => {
+        btn.onclick = (e) => {
+            const id = btn.getAttribute('href');
+            if (id && id.startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+    });
+</script>
+
+</body>
+</html>

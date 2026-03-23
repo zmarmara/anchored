@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Έρευνα - Από το Brand Equity στο Self-Equity | Anchored</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,500;1,8..60,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --accent: #d4a373;
+            --overlay: rgba(0, 0, 0, 0.45);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6) contrast(1.1);
+            transition: transform 15s linear;
+        }
+
+        section:hover .bg-image { transform: scale(1.2); }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .nav-logo img { height: 22px; filter: brightness(0) invert(1); }
+        .menu-toggle { background: none; border: none; cursor: pointer; color: var(--white); }
+
+        .content-box {
+            max-width: 1000px;
+            z-index: 10;
+        }
+
+        .hero-title { font-size: clamp(2.2rem, 9vw, 5rem); line-height: 1.05; margin-bottom: 25px; font-weight: 200; }
+        .sub-text { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.45em; margin-bottom: 25px; display: block; opacity: 0.8; }
+
+        .btn-minimal {
+            display: inline-block;
+            padding: 20px 50px;
+            border: 0.5px solid rgba(255,255,255,0.7);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            margin-top: 35px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-minimal:hover { background: var(--white); color: var(--black); letter-spacing: 0.45em; }
+
+        .insight-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .insight-item {
+            border-left: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 0 10px 20px;
+        }
+
+        .insight-item h3 { font-size: 0.8rem; margin-bottom: 5px; color: var(--accent); }
+        .insight-item p { font-size: 0.85rem; opacity: 0.84; font-weight: 200; }
+
+        #mobile-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--black); z-index: 2000; display: none;
+            flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+        }
+
+        #mobile-overlay a {
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-family: 'Source Serif 4', serif;
+            text-align: center;
+        }
+
+        @media (min-width: 850px) {
+            .insight-list { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            section { padding: 100px; }
+        }
+
+        footer {
+            position: absolute; bottom: 30px; width: 100%; text-align: center;
+            font-size: 0.6rem; letter-spacing: 0.25em; opacity: 0.55;
+        }
+
+        footer a { color: var(--white); text-decoration: none; margin: 0 10px; }
+				.lang-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 48px;
+			height: 28px;
+			padding: 0 12px;
+			border: 1px solid rgba(255,255,255,0.45);
+			text-decoration: none;
+			color: var(--white);
+			font-size: 0.55rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			background: transparent;
+			transition: all 0.3s ease;
+		}
+
+		.lang-btn:hover {
+			background: rgba(255,255,255,0.08);
+		}
+
+		.lang-btn.active {
+			background: var(--white);
+			color: var(--black);
+			border-color: var(--white);
+		}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/gr/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored Logo"></a>
+    <button class="menu-toggle" id="open-menu" aria-label="Άνοιγμα μενού">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+</nav>
+
+<div id="mobile-overlay">
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Κλείσιμο μενού">&times;</button>
+    <a href="/gr/framework/index.html">Το STILL Framework</a>
+    <a href="/gr/research/index.html">Έρευνα</a>
+    <a href="/gr//publications/index.html">Δημοσιεύσεις</a>
+    <a href="/gr//about/index.html">Σχετικά</a>
+	<div class="lang-switch">
+    <a href="/" class="lang-btn">EN</a>
+    <a href="/gr/" class="lang-btn">GR</a>
+    </div>
+</div>
+
+<div class="scroll-container">
+
+    <section id="hero">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Η Ερευνητική Πρωτοβουλία</span>
+            <h1 class="hero-title">Από το Brand Equity<br>στο Self-Equity</h1>
+            <p style="font-weight: 200; letter-spacing: 0.05em; opacity: 0.92; max-width: 760px; margin: 0 auto;">Μια προσπάθεια να εφαρμοστεί το μοντέλο CBBE του Keller στην προσωπική ανάπτυξη, με τρόπο που να διατηρεί τη βιωμένη ανθρώπινη εμπειρία στο κέντρο.</p>
+            <a href="https://www.researchgate.net/publication/395706791" target="_blank" class="btn-minimal">Ανάγνωση προδημοσίευσης</a>
+        </div>
+    </section>
+
+    <section id="inquiry">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Το Κεντρικό Ερώτημα</span>
+            <h2 style="font-size: 2rem; line-height: 1.4; max-width: 850px; margin: 0 auto;">Τι θα γινόταν αν προσεγγίζαμε την προσωπική ανάπτυξη με τη φροντίδα, τη δομή και τη συνέπεια με την οποία χτίζονται τα brands;</h2>
+            <p style="margin-top: 30px; font-weight: 200; opacity: 0.84; max-width: 760px; margin-left: auto; margin-right: auto;">Το Anchored ξεκινά από αυτή την ερώτηση και διερευνά αν η εσωτερική αξία μπορεί να παρατηρηθεί, να καλλιεργηθεί και να περιγραφεί χωρίς να χάνει το βάθος της.</p>
+        </div>
+    </section>
+
+    <section id="model">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1520067350812-8924618423d2?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Ταυτότητα → Σχέση</span>
+            <h2 style="font-size: 1.6rem; margin-bottom: 25px;">Μια δομημένη διαδρομή</h2>
+            <p style="font-weight: 200; max-width: 740px; margin: 0 auto;">Στον χώρο του branding, η αξία χτίζεται σταδιακά: από την ταυτότητα στο νόημα, από το νόημα στην απόκριση και από εκεί στη βαθιά σχέση εμπιστοσύνης.</p>
+            <p style="margin-top: 20px; font-weight: 400; color: var(--accent);">Το Self-Equity (η προσωπική αξία ως κεφάλαιο) προτείνεται ως το εσωτερικό ανάλογο αυτής της αξίας.</p>
+        </div>
+    </section>
+
+    <section id="quote">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <h2 style="font-style: italic; text-transform: none; font-size: 2.15rem; line-height: 1.35; max-width: 900px; margin: 0 auto; letter-spacing: 0.03em;">«Self-Equity είναι η αξία που χτίζει κανείς μέσα του, μέσα από συνεπή επίγνωση και σκόπιμη πράξη.»</h2>
+        </div>
+    </section>
+
+    <section id="app-role">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1494500664877-981f47155032?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Το Όχημα της Έρευνας</span>
+            <h2>Πώς παρατηρείται ο εαυτός</h2>
+            <div class="insight-list">
+                <div class="insight-item"><h3>Ταυτότητα</h3><p>Πώς αντιλαμβάνεται το άτομο τον εαυτό του σε φάσεις μετάβασης, αβεβαιότητας ή ανασυγκρότησης.</p></div>
+                <div class="insight-item"><h3>Νόημα</h3><p>Πώς αποδίδει σημασία στην καθημερινή εμπειρία και στα μικρά ίχνη προόδου.</p></div>
+                <div class="insight-item"><h3>Απόκριση</h3><p>Πώς ανταποκρίνεται συναισθηματικά, νοητικά και πρακτικά στις εσωτερικές και εξωτερικές προκλήσεις.</p></div>
+                <div class="insight-item"><h3>Εμπιστοσύνη</h3><p>Πώς καλλιεργείται σταδιακά μια αίσθηση εσωτερικής σταθερότητας που δεν εξαρτάται μόνο από εξωτερική επιβεβαίωση.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="participation">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Συμβολή στο Βάθος</span>
+            <h2 style="font-size: 1.6rem; margin-bottom: 30px;">Γέφυρα ανάμεσα στη θεωρία και την εμπειρία</h2>
+            <p style="font-weight: 200; max-width: 690px; margin: 0 auto 30px;">Η έρευνα αυτή εξετάζει αν η προσωπική ανάπτυξη μπορεί να προσεγγιστεί με δομή, χωρίς να ισοπεδώνεται η πολυπλοκότητα του ανθρώπου και χωρίς να χάνεται η υπαρξιακή της διάσταση.</p>
+            <div style="text-align: left; opacity: 0.92; font-size: 0.88rem; border-left: 1px solid var(--accent); padding-left: 20px; max-width: 520px; margin: 0 auto;">
+                <p>• αναγνώριση αξίας χωρίς εξωτερική επιβεβαίωση</p>
+                <p>• σταδιακή συγκρότηση εσωτερικής σταθερότητας</p>
+                <p>• παρατήρηση της αλλαγής την ώρα που συμβαίνει</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="content-box">
+            <span class="sub-text">Μια Ζωντανή Διαδικασία</span>
+            <h2>Τι προσφέρει η συμμετοχή</h2>
+            <p style="margin-top: 20px; font-weight: 200; letter-spacing: 0.04em; max-width: 740px; margin-left: auto; margin-right: auto;">
+                Η συμμετοχή συμβάλλει σε μια προσπάθεια να συνδεθούν η θεωρητική σκέψη με τη βιωμένη εμπειρία, τα μοντέλα με τη συναισθηματική πραγματικότητα και η παρατήρηση με την ουσιαστική αλλαγή.
+            </p>
+            <a href="#" class="btn-minimal">Οι συμμετοχές θα ανοίξουν σύντομα</a>
+            <p style="margin-top: 50px; font-size: 0.72rem; opacity: 0.72; max-width: 560px; margin-left: auto; margin-right: auto;">
+                Στον πυρήνα της, η πρωτοβουλία αυτή παραμένει ανθρώπινη: μια διερεύνηση του πώς χτίζουμε εσωτερική αξία μέσα σε έναν κόσμο που μας μετρά συνεχώς απ’ έξω.
+            </p>
+        </div>
+        <footer>
+            <p>&copy; 2026 ANCHORED • ZOI S MARMARA</p>
+            <div style="margin-top: 15px;">
+                <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a>
+                <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a>
+                <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const overlay = document.getElementById('mobile-overlay');
+
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+
+    document.querySelectorAll('.btn-minimal').forEach(btn => {
+        btn.onclick = (e) => {
+            const id = btn.getAttribute('href');
+            if(id && id.startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+    });
+</script>
+
+</body>
+</html>

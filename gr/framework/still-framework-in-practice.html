@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Το STILL Framework στην πράξη | Anchored</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --accent: #d4a373;
+            --panel: rgba(255,255,255,0.05);
+            --panel-border: rgba(255,255,255,0.14);
+            --soft-text: rgba(255,255,255,0.78);
+            --muted-text: rgba(255,255,255,0.58);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.45);
+        }
+
+        p { font-weight: 200; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        #mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        #mobile-overlay a {
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-family: 'Source Serif 4', serif;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .page-hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 30px 80px;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.5) contrast(1.08);
+            transform: scale(1.04);
+        }
+
+        .page-hero::after,
+        .content-section::before,
+        .profile-wrap::before,
+        .footer-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.32), rgba(10,10,10,0.84));
+            z-index: -1;
+        }
+
+        .content-box {
+            max-width: 980px;
+            z-index: 2;
+        }
+
+        .sub-text {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.38em;
+            margin-bottom: 25px;
+            display: block;
+            opacity: 0.82;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 8vw, 4.8rem);
+            line-height: 1.08;
+            margin-bottom: 28px;
+            font-weight: 200;
+        }
+
+        .hero-copy {
+            max-width: 820px;
+            margin: 0 auto;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            color: var(--soft-text);
+        }
+
+        .btn-minimal {
+            display: inline-block;
+            padding: 20px 52px;
+            border: 0.5px solid rgba(255,255,255,0.7);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            margin-top: 40px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-minimal:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .content-section,
+        .profile-wrap,
+        .footer-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section .bg-image,
+        .profile-wrap .bg-image,
+        .footer-section .bg-image {
+            filter: brightness(0.32) contrast(1.05);
+        }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 110px 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-intro {
+            max-width: 840px;
+            margin-bottom: 54px;
+        }
+
+        .section-intro h2 {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            margin-bottom: 18px;
+            line-height: 1.22;
+        }
+
+        .section-intro p,
+        .story-text p,
+        .feature-panel p,
+        .step-card p,
+        .quote-card p,
+        .profile-copy p,
+        .profile-links li,
+        .list-card li {
+            color: var(--soft-text);
+        }
+
+        .glass-card,
+        .feature-panel,
+        .step-card,
+        .profile-copy,
+        .profile-links,
+        .list-card {
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border-radius: 30px;
+            padding: 38px 34px;
+        }
+
+        .story-grid,
+        .dual-grid,
+        .steps-grid,
+        .profile-grid {
+            display: grid;
+            gap: 28px;
+        }
+
+        .story-grid {
+            grid-template-columns: 1.08fr 0.92fr;
+        }
+
+        .dual-grid,
+        .profile-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .steps-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .story-text p + p,
+        .feature-panel p + p,
+        .step-card p + p,
+        .profile-copy p + p {
+            margin-top: 14px;
+        }
+
+        .feature-panel h3,
+        .step-card h3,
+        .list-card h3,
+        .profile-links h3,
+        .profile-copy h2 {
+            text-transform: none;
+            letter-spacing: 0.04em;
+            text-shadow: none;
+        }
+
+        .feature-panel h3,
+        .step-card h3,
+        .list-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .accent-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .quote-card {
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 40px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .quote-card p {
+            font-family: 'Source Serif 4', serif;
+            font-size: clamp(1.35rem, 3vw, 2.05rem);
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+        }
+
+        .step-card {
+            min-height: 100%;
+        }
+
+        .step-number {
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted-text);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .soft-list,
+        .link-list {
+            list-style: none;
+        }
+
+        .soft-list li,
+        .link-list li {
+            margin-bottom: 12px;
+        }
+
+        .profile-copy h2 {
+            font-size: 2.05rem;
+            margin-bottom: 18px;
+        }
+
+        .profile-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-section {
+            min-height: 44vh;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .footer-inner {
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            padding: 120px 30px 30px;
+            text-align: center;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 0.28em;
+            opacity: 0.5;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 900px) {
+            nav { padding: 28px 24px; }
+            .story-grid,
+            .dual-grid,
+            .steps-grid,
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .glass-card,
+            .feature-panel,
+            .step-card,
+            .profile-copy,
+            .profile-links,
+            .list-card,
+            .quote-card {
+                padding: 30px 24px;
+            }
+            .hero-copy { font-size: 0.96rem; }
+            .footer-inner { padding-top: 90px; }
+            #mobile-overlay a { letter-spacing: 0.16em; }
+        }
+				.lang-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 48px;
+			height: 28px;
+			padding: 0 12px;
+			border: 1px solid rgba(255,255,255,0.45);
+			text-decoration: none;
+			color: var(--white);
+			font-size: 0.55rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			background: transparent;
+			transition: all 0.3s ease;
+		}
+
+		.lang-btn:hover {
+			background: rgba(255,255,255,0.08);
+		}
+
+		.lang-btn.active {
+			background: var(--white);
+			color: var(--black);
+			border-color: var(--white);
+		}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/gr/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
+    <button class="menu-toggle" id="open-menu" aria-label="Άνοιγμα μενού">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+</nav>
+
+<div id="mobile-overlay">
+    <button style="position: absolute; top: 40px; right: 40px; background:none; border:none; color:white; font-size: 3rem; font-weight: 100;" id="close-menu" aria-label="Κλείσιμο μενού">&times;</button>
+    <a href="/gr/framework/index.html">Το STILL Framework</a>
+    <a href="/gr/research/index.html">Έρευνα</a>
+    <a href="/gr//publications/index.html">Δημοσιεύσεις</a>
+    <a href="/gr//about/index.html">Σχετικά</a>
+	<div class="lang-switch">
+    <a href="/" class="lang-btn">EN</a>
+    <a href="/gr/" class="lang-btn">GR</a>
+    </div>
+</div>
+
+<section class="page-hero">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="content-box">
+        <span class="sub-text">Το STILL στην πράξη</span>
+        <h1 class="hero-title">Πώς μια αρνητική σκέψη μετατρέπεται σε ελπιδοφόρα προοπτική.</h1>
+        <p class="hero-copy">
+            Το STILL Framework δεν μένει στη θεωρία. Στο παράδειγμα αυτό, μια επαναλαμβανόμενη αρνητική σκέψη γίνεται αφετηρία για επίγνωση, αναδιατύπωση, πράξη και ανασκόπηση. Έτσι φαίνεται στην πράξη ο κύκλος Ροή, Άγκυρες, Ανασκόπηση, Επαναπροσδιορισμός.
+        </p>
+        <a href="#example" class="btn-minimal">Δες το παράδειγμα</a>
+    </div>
+</section>
+
+<section class="content-section" id="example">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="section-intro">
+            <span class="sub-text" style="margin-bottom:14px;">Μέρος ΙΙΙ</span>
+            <h2>Παράδειγμα εφαρμογής: από την αρνητική σκέψη στην ελπιδοφόρα προοπτική</h2>
+            <p>
+                Στο συγκεκριμένο παράδειγμα, ο άνθρωπος δεν προσπαθεί απλώς να «σκεφτεί θετικά». Μαθαίνει να αναγνωρίζει τη σκέψη, να παίρνει απόσταση από αυτήν, να της δίνει νέο σχήμα και να τη συνδέει με μια μικρή πράξη που στηρίζει την εσωτερική του κατεύθυνση.
+            </p>
+        </div>
+
+        <div class="story-grid">
+            <div class="glass-card story-text">
+                <span class="accent-label">Το πρόβλημα</span>
+                <p>Οι αρνητικές σκέψεις επανέρχονται εύκολα και συχνά απορροφούν ενέργεια, μειώνουν την προοπτική και κάνουν την καθημερινότητα να φαίνεται πιο βαριά από όσο είναι.</p>
+                <p>Το STILL δεν υπόσχεται ότι αυτές οι σκέψεις θα εξαφανιστούν. Προσφέρει έναν σταθερό τρόπο να τις συναντήσεις διαφορετικά.</p>
+                <p>Η μετατόπιση δεν είναι από την άρνηση στην τεχνητή αισιοδοξία. Είναι από την αυτόματη παγίδευση σε μια πιο συνειδητή, ελπιδοφόρα στάση που μπορεί να στηρίξει δράση.</p>
+            </div>
+
+            <div class="feature-panel">
+                <span class="accent-label">Στόχος Ροής</span>
+                <h3>Να μετασχηματίσω μια επαναλαμβανόμενη αρνητική σκέψη σε προοπτική που με στηρίζει.</h3>
+                <p>Ο στόχος είναι μικρός, σαφής και χρονικά οριοθετημένος. Δεν επιχειρεί να λύσει όλη τη ζωή μαζί.</p>
+                <p>Εστιάζει σε μία σκέψη, σε μία Ροή και σε ένα εφαρμόσιμο βήμα τη φορά.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1494500664877-981f47155032?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="quote-card">
+            <span class="accent-label">Παράδειγμα αρνητικής σκέψης</span>
+            <p>«Αν το δοκιμάσω, θα αποτύχω.»</p>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="section-intro">
+            <span class="sub-text" style="margin-bottom:14px;">Οι Άγκυρες</span>
+            <h2>Πώς ξεδιπλώνεται η Ροή βήμα προς βήμα</h2>
+            <p>
+                Η πρακτική εφαρμογή του STILL οργανώνεται μέσα από Άγκυρες. Κάθε Άγκυρα κρατά ένα μικρό αλλά ουσιαστικό μέρος της διαδρομής, ώστε η αλλαγή να μη μείνει αφηρημένη.
+            </p>
+        </div>
+
+        <div class="steps-grid">
+            <article class="step-card">
+                <span class="step-number">Βήμα 1</span>
+                <span class="accent-label">Επίγνωση</span>
+                <h3>Ονομάζεις τη σκέψη</h3>
+                <p>Γράφεις την αρνητική σκέψη ακριβώς όπως εμφανίζεται. Η ονομασία την βγάζει από το αόριστο και τη φέρνει στο φως.</p>
+                <p>Το πρώτο κέρδος είναι η ορατότητα. Αυτό που πριν σε κυρίευε σιωπηλά, τώρα γίνεται κάτι που μπορείς να παρατηρήσεις.</p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">Βήμα 2</span>
+                <span class="accent-label">Παύση</span>
+                <h3>Δημιουργείς απόσταση</h3>
+                <p>Παίρνεις μερικές βαθιές αναπνοές και φαντάζεσαι τη σκέψη σαν κάτι έξω από εσένα. Δεν είσαι η σκέψη σου. Είναι ένα γεγονός που περνά από μέσα σου.</p>
+                <p>Αυτή η μικρή απόσταση ανοίγει χώρο για επιλογή και μειώνει την ταύτιση.</p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">Βήμα 3</span>
+                <span class="accent-label">Αναδιατύπωση</span>
+                <h3>Δίνεις νέο σχήμα στη γλώσσα</h3>
+                <p>Αντί για απόλυτες λέξεις, χρησιμοποιείς διατυπώσεις που αφήνουν χώρο για κίνηση και μάθηση.</p>
+                <p>Παράδειγμα: «Ακόμα κι αν δεν το καταφέρω, με κάθε δοκιμή μαθαίνω κάτι χρήσιμο που με φέρνει πιο κοντά στον σκοπό μου.»</p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">Βήμα 4</span>
+                <span class="accent-label">Ασφάλισε την ελπίδα</span>
+                <h3>Στερεώνεις τη νέα προοπτική</h3>
+                <p>Αποτυπώνεις με λόγια μια φράση που στηρίζει το νέο νόημα.</p>
+                <p>Παράδειγμα: «Κάθε βήμα που κάνω με φέρνει πιο κοντά στην προσωπική μου ανάπτυξη. Επιτυχία είναι να συνεχίζω να προχωρώ.»</p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">Βήμα 5</span>
+                <span class="accent-label">Εμπράγματη εμπειρία</span>
+                <h3>Συνδέεις τη σκέψη με πράξη</h3>
+                <p>Επιλέγεις μια μικρή ενέργεια που μεταφέρει τη νέα στάση στην πραγματική ζωή. Μπορεί να είναι μια πρώτη δοκιμή προς τον στόχο.</p>
+                <p>Έτσι η ελπίδα δεν μένει ιδέα. Γίνεται βίωμα.</p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">Βήμα 6</span>
+                <span class="accent-label">Ανασκόπηση</span>
+                <h3>Βλέπεις τι λειτούργησε</h3>
+                <p>Στο τέλος της Ροής, ρωτάς: Τι άλλαξε; Ποια πράξη με στήριξε πραγματικά; Ποια αναδιατύπωση λειτούργησε καλύτερα; </p>
+                <p>Από εδώ ξεκινά ο επαναπροσδιορισμός του επόμενου κύκλου.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="section-intro">
+            <span class="sub-text" style="margin-bottom:14px;">Τι σημαίνει επιτυχία</span>
+            <h2>Πότε ολοκληρώνεται αυτή η Ροή</h2>
+            <p>
+                Η Ροή δεν θεωρείται επιτυχημένη όταν οι αρνητικές σκέψεις εξαφανιστούν οριστικά. Ολοκληρώνεται όταν ο άνθρωπος μπορεί να τις συναντά και να τις μετατρέπει πιο γρήγορα, πιο φυσικά και με λιγότερη εσωτερική φθορά.
+            </p>
+        </div>
+
+        <div class="dual-grid">
+            <div class="list-card">
+                <span class="accent-label">Σημάδια μετατόπισης</span>
+                <h3>Τι αρχίζει να αλλάζει</h3>
+                <ul class="soft-list">
+                    <li>Η αρνητική σκέψη αναγνωρίζεται νωρίτερα.</li>
+                    <li>Η αναδιατύπωση γίνεται πιο διαθέσιμη.</li>
+                    <li>Η ελπίδα συνδέεται με μικρές πράξεις και όχι μόνο με ευχές.</li>
+                    <li>Η ανάκαμψη μετά από πισωγύρισμα γίνεται ταχύτερη.</li>
+                </ul>
+            </div>
+
+            <div class="list-card">
+                <span class="accent-label">Γιατί αυτό είναι STILL</span>
+                <h3>Ολόκληρος ο κύκλος σε κίνηση</h3>
+                <ul class="soft-list">
+                    <li>Υπάρχει σαφής Στόχος Ροής.</li>
+                    <li>Οι Άγκυρες κρατούν τη διαδρομή εφαρμόσιμη.</li>
+                    <li>Η Ανασκόπηση παράγει μάθηση χωρίς ενοχή.</li>
+                    <li>Ο Επαναπροσδιορισμός τροφοδοτεί την επόμενη Ροή.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="profile-wrap">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="container">
+        <div class="profile-grid">
+            <div class="profile-copy">
+                <span class="accent-label">Συμπέρασμα</span>
+                <h2>Το STILL Framework γίνεται πρακτικό όταν δίνει μορφή στην εσωτερική αλλαγή</h2>
+                <p>Το παράδειγμα αυτό δείχνει καθαρά ότι το STILL δεν είναι απλώς μια αφηρημένη γλώσσα προσωπικής ανάπτυξης.</p>
+                <p>Είναι ένας τρόπος να οργανώνεις την αλλαγή σε μικρούς κύκλους: να βλέπεις τι συμβαίνει, να δοκιμάζεις, να αναστοχάζεσαι και να συνεχίζεις με περισσότερη ακρίβεια.</p>
+                <p>Εκεί βρίσκεται και η πρακτική του δύναμη. Στο ότι μετατρέπει μια δύσκολη εσωτερική εμπειρία σε κάτι που μπορεί να δουλευτεί βήμα βήμα.</p>
+            </div>
+
+            <div class="profile-links">
+                <span class="accent-label">Με μία ματιά</span>
+                <h3>Η εφαρμογή του STILL στην πράξη</h3>
+                <ul class="link-list">
+                    <li>Μία αρνητική σκέψη γίνεται ορατή.</li>
+                    <li>Η επίγνωση φέρνει απόσταση και καθαρότητα.</li>
+                    <li>Η αναδιατύπωση ανοίγει χώρο για ελπίδα.</li>
+                    <li>Η πράξη δίνει σώμα στη νέα προοπτική.</li>
+                    <li>Η ανασκόπηση χτίζει το επόμενο βήμα.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-section">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="footer-inner">
+        <footer>
+            <p>&copy; 2026 ANCHORED • ZOI S MARMARA</p>
+            <div style="margin-top: 15px;">
+                <a href="https://www.researchgate.net/profile/Zoi-Marmara" target="_blank">ResearchGate</a>
+                <a href="https://philpeople.org/profiles/zoi-marmara" target="_blank">PhilPapers</a>
+                <a href="https://www.linkedin.com/in/zoemarmara/" target="_blank">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+</section>
+
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const overlay = document.getElementById('mobile-overlay');
+
+    openBtn.onclick = () => overlay.style.display = 'flex';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.style.display = 'none'; };
+</script>
+
+</body>
+</html>
