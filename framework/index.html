@@ -302,14 +302,12 @@
         }
 
         .comparison-wrap {
-            overflow-x: auto;
             margin: 28px 0 18px;
         }
 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 620px;
         }
 
         .comparison-table th,
@@ -432,12 +430,49 @@
             margin: 0 10px;
         }
 
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 48px;
+            height: 28px;
+            padding: 0 12px;
+            border: 1px solid rgba(255,255,255,0.45);
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.55rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
         @media (max-width: 900px) {
             nav { padding: 28px 24px; }
+
             .framework-layout,
             .two-column-grid {
                 grid-template-columns: 1fr;
             }
+
             .framework-card,
             .detail-card,
             .intro-panel,
@@ -445,36 +480,121 @@
             .step-card {
                 padding: 30px 24px;
             }
+
             .hero-copy { font-size: 0.96rem; }
             .footer-inner { padding-top: 90px; }
-            .comparison-table { min-width: 560px; }
         }
-		.lang-btn {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			min-width: 48px;
-			height: 28px;
-			padding: 0 12px;
-			border: 1px solid rgba(255,255,255,0.45);
-			text-decoration: none;
-			color: var(--white);
-			font-size: 0.55rem;
-			letter-spacing: 0.14em;
-			text-transform: uppercase;
-			background: transparent;
-			transition: all 0.3s ease;
-		}
 
-		.lang-btn:hover {
-			background: rgba(255,255,255,0.08);
-		}
+        @media (max-width: 680px) {
+            .container {
+                padding: 90px 20px;
+            }
 
-		.lang-btn.active {
-			background: var(--white);
-			color: var(--black);
-			border-color: var(--white);
-		}
+            .sub-text {
+                letter-spacing: 0.42em;
+                font-size: 0.64rem;
+            }
+
+            .btn-minimal {
+                width: 100%;
+                max-width: 320px;
+                padding: 18px 24px;
+                letter-spacing: 0.28em;
+            }
+
+            .btn-minimal:hover {
+                letter-spacing: 0.32em;
+            }
+
+            .cycle-container {
+                gap: 10px;
+            }
+
+            .separator {
+                display: none;
+            }
+
+            .cycle-item {
+                width: 100%;
+                text-align: center;
+            }
+
+            .comparison-wrap {
+                overflow: visible;
+            }
+
+            .comparison-table,
+            .comparison-table thead,
+            .comparison-table tbody,
+            .comparison-table th,
+            .comparison-table td,
+            .comparison-table tr {
+                display: block;
+                width: 100%;
+            }
+
+            .comparison-table {
+                border-collapse: separate;
+            }
+
+            .comparison-table thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .comparison-table tbody {
+                display: grid;
+                gap: 16px;
+            }
+
+            .comparison-table tr {
+                border: 1px solid var(--panel-border);
+                border-radius: 22px;
+                background: rgba(255,255,255,0.04);
+                padding: 6px 0;
+                overflow: hidden;
+            }
+
+            .comparison-table td {
+                border: none;
+                border-bottom: 1px solid var(--table-line);
+                padding: 12px 16px 12px 16px;
+                font-size: 0.94rem;
+                width: 100%;
+            }
+
+            .comparison-table tr td:last-child {
+                border-bottom: none;
+            }
+
+            .comparison-table td:first-child {
+                width: 100%;
+                background: rgba(255,255,255,0.06);
+                color: var(--accent);
+                font-weight: 600;
+            }
+
+            .comparison-table td[data-label]::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+                color: var(--muted-text);
+                margin-bottom: 6px;
+            }
+
+            .comparison-table td:first-child::before {
+                color: var(--muted-text);
+            }
+        }
     </style>
 </head>
 <body>
@@ -482,7 +602,11 @@
 <nav>
     <a href="/" class="nav-logo"><img src="../anchored-app.png" alt="Anchored"></a>
     <button class="menu-toggle" id="open-menu" aria-label="Open menu">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
     </button>
 </nav>
 
@@ -492,9 +616,9 @@
     <a href="/research/index.html">Research</a>
     <a href="/publications/index.html">Publications</a>
     <a href="/about/index.html">About</a>
-	<div class="lang-switch">
-    <a href="/" class="lang-btn">EN</a>
-    <a href="/gr/" class="lang-btn">GR</a>
+    <div class="lang-switch">
+        <a href="/" class="lang-btn">EN</a>
+        <a href="/gr/" class="lang-btn">GR</a>
     </div>
 </div>
 
@@ -568,29 +692,29 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Structure</td>
-                                <td>Linear, moving from goal to end point</td>
-                                <td>Circular, built around Flows and loops</td>
+                                <td data-label="Focus">Structure</td>
+                                <td data-label="Traditional Methods">Linear, moving from goal to end point</td>
+                                <td data-label="STILL Framework™">Circular, built around Flows and loops</td>
                             </tr>
                             <tr>
-                                <td>Application</td>
-                                <td>Reflective and conceptual</td>
-                                <td>Experiential and measurable</td>
+                                <td data-label="Focus">Application</td>
+                                <td data-label="Traditional Methods">Reflective and conceptual</td>
+                                <td data-label="STILL Framework™">Experiential and measurable</td>
                             </tr>
                             <tr>
-                                <td>Role</td>
-                                <td>Passive participant</td>
-                                <td>Active developer</td>
+                                <td data-label="Focus">Role</td>
+                                <td data-label="Traditional Methods">Passive participant</td>
+                                <td data-label="STILL Framework™">Active developer</td>
                             </tr>
                             <tr>
-                                <td>Failure</td>
-                                <td>Reflection without consequence</td>
-                                <td>Iteration and integration</td>
+                                <td data-label="Focus">Failure</td>
+                                <td data-label="Traditional Methods">Reflection without consequence</td>
+                                <td data-label="STILL Framework™">Iteration and integration</td>
                             </tr>
                             <tr>
-                                <td>Time / Progress</td>
-                                <td>Session-based</td>
-                                <td>Continuous and embedded in daily life</td>
+                                <td data-label="Focus">Time / Progress</td>
+                                <td data-label="Traditional Methods">Session-based</td>
+                                <td data-label="STILL Framework™">Continuous and embedded in daily life</td>
                             </tr>
                         </tbody>
                     </table>
